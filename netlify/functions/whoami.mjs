@@ -1,8 +1,3 @@
-/* whoami — identifies the Whop user from their injected token.
-   Works for Whop Products (no appID required).
-   Whop automatically injects x-whop-user-token on every request
-   made from within the Whop hub/app. */
-
 exports.handler = async (event) => {
   const headers = {
     'Access-Control-Allow-Origin': '*',
@@ -14,19 +9,28 @@ exports.handler = async (event) => {
     return { statusCode: 200, headers };
   }
 
+  /* DEBUG — log every header Whop sends so we know what's available */
+  const safeHeaders = {};
+  for (const [k, v] of Object.entries(event.headers || {})) {
+    /* Redact the actual token value but show the key name */
+    safeHeaders[k] = k.toLowerCase().includes('token') || k.toLowerCase().includes('auth')
+      ? v ? '[PRESENT]' : '[EMPTY]'
+      : v;
+  }
+  console.log('HEADERS RECEIVED:', JSON.stringify(safeHeaders));
+
   const token = event.headers['x-whop-user-token'];
 
   if (!token) {
+    console.log('NO TOKEN — x-whop-user-token absent');
     return {
       statusCode: 401,
       headers,
-      body: JSON.stringify({ error: 'No Whop user token — user may not be inside Whop hub' }),
+      body: JSON.stringify({ error: 'No Whop user token' }),
     };
   }
 
   try {
-    /* Call Whop API directly with the user's token as Bearer.
-       This works for Products — no appID or SDK needed. */
     const res = await fetch('https://api.whop.com/api/v2/me', {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -36,11 +40,11 @@ exports.handler = async (event) => {
 
     if (!res.ok) {
       const text = await res.text();
-      console.error('Whop /api/v2/me error:', res.status, text);
+      console.error('Whop API error:', res.status, text);
       return {
         statusCode: 401,
         headers,
-        body: JSON.stringify({ error: 'Token verification failed', status: res.status }),
+        body: JSON.stringify({ error: 'Token verification failed' }),
       };
     }
 
@@ -48,15 +52,15 @@ exports.handler = async (event) => {
     const userId = user.id;
 
     if (!userId) {
-      console.error('No user ID in Whop response:', JSON.stringify(user));
+      console.error('No user ID in response:', JSON.stringify(user));
       return {
         statusCode: 401,
         headers,
-        body: JSON.stringify({ error: 'No user ID returned from Whop' }),
+        body: JSON.stringify({ error: 'No user ID from Whop' }),
       };
     }
 
-    console.log('whoami success — userId:', userId);
+    console.log('SUCCESS — userId:', userId);
     return {
       statusCode: 200,
       headers,
