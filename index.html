@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dopamine Cleaning ✨ ADHD Planner</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--pink:#FF6B9D;--yellow:#FFD93D;--blue:#4D96FF;--green:#6BCB77;--lavender:#A8A4CE;--coral:#FF6B6B;--orange:#FF9F43;--teal:#4ECDC4;--bg:#F8F7FF;--text:#1a1a2e;--muted:#777;--border:rgba(0,0,0,0.08)}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;padding-bottom:80px}
+.nav{background:#fff;border-bottom:2px solid var(--border);padding:0 12px;display:flex;align-items:center;overflow-x:auto;scrollbar-width:none;position:sticky;top:0;z-index:200}
+.nav::-webkit-scrollbar{display:none}
+.nav-logo{font-family:'Pacifico',cursive;font-size:17px;background:linear-gradient(135deg,var(--pink),var(--coral),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;white-space:nowrap;padding:12px 14px 12px 0;border-right:1px solid var(--border);margin-right:6px;flex-shrink:0}
+.nb{padding:10px 12px;border:none;background:none;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:all .2s;margin-bottom:-2px;flex-shrink:0}
+.nb.active{color:var(--pink);border-bottom-color:var(--pink)}
+.nb:hover{color:var(--text)}
+.mbar{background:#fff;padding:8px 14px;display:flex;gap:8px;align-items:center;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.ml{font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.mt{display:flex;background:#f0eeff;border-radius:20px;padding:3px}
+.mo{padding:5px 13px;border-radius:16px;font-size:12px;font-weight:800;border:none;cursor:pointer;transition:all .2s;background:none;color:var(--muted)}
+.mo.active{background:var(--lavender);color:#fff}
+.esel{font-size:12px;font-weight:800;border:1.5px solid var(--border);border-radius:8px;padding:4px 8px;font-family:'Nunito',sans-serif;outline:none}
+.main{padding:16px;max-width:820px;margin:0 auto}
+.pt{font-size:22px;font-weight:900;margin-bottom:3px}
+.ps{font-size:13px;color:var(--muted);margin-bottom:18px}
+.st{font-size:15px;font-weight:900;margin:16px 0 10px;display:flex;align-items:center;gap:6px}
+.onboard{position:fixed;inset:0;background:rgba(10,10,30,.88);display:flex;align-items:center;justify-content:center;z-index:1000;padding:20px}
+.obc{background:#fff;border-radius:28px;padding:28px 24px;max-width:390px;width:100%;text-align:center;max-height:90vh;overflow-y:auto}
+.obt{font-family:'Pacifico',cursive;font-size:30px;background:linear-gradient(135deg,var(--pink),var(--coral),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:4px}
+.obs{font-size:13px;color:var(--muted);margin-bottom:22px;line-height:1.5}
+.obos{display:flex;flex-direction:column;gap:10px;margin-bottom:18px}
+.obo{padding:14px 18px;border-radius:16px;border:2.5px solid var(--border);background:#fff;font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;cursor:pointer;transition:all .2s;text-align:left;display:flex;align-items:center;gap:10px}
+.obo:hover,.obo.sel{border-color:var(--pink);background:#fff5f8}
+.obst{font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.eopts{display:flex;gap:8px;justify-content:center;margin-bottom:18px;flex-wrap:wrap}
+.eopt{padding:10px 14px;border-radius:12px;border:2px solid var(--border);background:#fff;font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;cursor:pointer;transition:all .2s}
+.obgo{width:100%;padding:16px;border-radius:16px;border:none;background:linear-gradient(135deg,var(--pink),var(--coral));color:#fff;font-family:'Pacifico',cursive;font-size:19px;cursor:pointer;transition:all .2s;margin-top:4px}
+.obgo:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(255,107,107,.4)}
+.jbtn{width:100%;padding:22px 20px;background:linear-gradient(135deg,var(--coral),var(--pink));border:none;border-radius:22px;color:#fff;font-family:'Pacifico',cursive;font-size:21px;cursor:pointer;margin-bottom:14px;box-shadow:0 4px 22px rgba(255,107,107,.35);transition:transform .15s,box-shadow .15s}
+.jbtn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,107,107,.45)}
+.jbtn:active{transform:scale(.97)}
+.srow{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+.sc{background:#fff;border-radius:16px;padding:14px;text-align:center;border:2px solid var(--border)}
+.sn{font-size:28px;font-weight:900;line-height:1.1}
+.sl{font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
+.pw{background:#f0f0f0;border-radius:8px;height:10px;overflow:hidden;margin:6px 0 14px}
+.pf{height:100%;border-radius:8px;transition:width .5s}
+.stk{background:linear-gradient(135deg,var(--orange),var(--coral));color:#fff;border-radius:18px;padding:14px 18px;display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.tcard{background:linear-gradient(135deg,#667eea,#764ba2);border-radius:20px;padding:18px;color:#fff;margin-bottom:14px}
+.tdisp{font-size:52px;font-weight:900;text-align:center;font-variant-numeric:tabular-nums;margin:8px 0;letter-spacing:2px}
+.tpre{display:flex;gap:6px;justify-content:center;margin-bottom:10px;flex-wrap:wrap}
+.tpb{padding:5px 11px;border-radius:10px;border:1.5px solid rgba(255,255,255,.5);background:transparent;color:#fff;font-family:'Nunito',sans-serif;font-size:12px;font-weight:800;cursor:pointer;transition:all .2s}
+.tpb.sel,.tpb:hover{background:rgba(255,255,255,.25)}
+.tbtns{display:flex;gap:8px;justify-content:center}
+.tbtn{padding:9px 18px;border-radius:12px;border:2px solid rgba(255,255,255,.4);background:rgba(255,255,255,.15);color:#fff;font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;cursor:pointer;transition:all .2s}
+.tst{background:rgba(255,255,255,.92)!important;color:#764ba2!important;border-color:transparent!important}
+.ti{background:#fff;border-radius:14px;padding:12px 14px;margin-bottom:7px;display:flex;align-items:center;gap:11px;border:2px solid var(--border);transition:all .2s;cursor:pointer;user-select:none}
+.ti:hover{border-color:rgba(0,0,0,.14);transform:translateX(2px)}
+.ti.done{opacity:.45;border-style:dashed}
+.ti.done .tt{text-decoration:line-through;color:var(--muted)}
+.tc{width:26px;height:26px;border-radius:8px;border:2.5px solid;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;transition:all .2s}
+.tc.on{color:#fff!important;border-color:transparent!important}
+.tt{flex:1;font-size:14px;font-weight:700}
+.tm{font-size:11px;color:var(--muted);font-weight:700;margin-top:2px}
+.zg{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-bottom:14px}
+.zc{background:#fff;border-radius:18px;padding:16px 12px;border:2.5px solid var(--border);cursor:pointer;transition:all .2s;text-align:center}
+.zc:hover,.zc.on{transform:translateY(-3px);box-shadow:0 6px 22px rgba(0,0,0,.1)}
+.zi{font-size:30px;margin-bottom:6px}
+.zn{font-size:12px;font-weight:800}
+.zpr{height:5px;border-radius:3px;background:#f0f0f0;margin-top:8px;overflow:hidden}
+.zb{height:100%;border-radius:3px;transition:width .4s}
+.cs{background:#fff;border-radius:18px;padding:16px;margin-bottom:12px}
+.ch{font-size:15px;font-weight:900;margin-bottom:12px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.cr{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid #f5f5f5}
+.cr:last-child{border-bottom:none}
+.mc{width:20px;height:20px;border-radius:6px;border:2px solid;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;font-weight:800;transition:all .15s;user-select:none}
+.mc.on{color:#fff!important;border-color:transparent!important}
+.cl{font-size:13px;font-weight:600;flex:1}
+.spg{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sps{background:#f8f8ff;border-radius:14px;padding:12px}
+.sph{font-size:12px;font-weight:900;padding:5px 10px;border-radius:8px;color:#fff;margin-bottom:8px;text-align:center}
+.seag{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ld{background:#fff;border-radius:14px;padding:12px 14px;margin-bottom:8px;display:flex;gap:12px;align-items:flex-start;border:2px solid var(--border)}
+.lt{color:#fff;border-radius:10px;padding:6px 10px;font-size:12px;font-weight:800;text-align:center;min-width:82px;flex-shrink:0}
+.hc{background:#fff;border-radius:16px;padding:16px;margin-bottom:10px;border-left:4px solid var(--pink)}
+.ht{font-size:12px;font-weight:900;color:var(--pink);text-transform:uppercase;letter-spacing:.6px;margin-bottom:5px}
+.hd{font-size:13px;color:var(--muted);line-height:1.55}
+.supg{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sus{background:#fff;border-radius:16px;padding:14px;border-top:4px solid}
+.ft{background:#e8fff5;border-left:4px solid var(--teal);border-radius:10px;padding:12px 14px;margin-bottom:10px}
+.d30g{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:10px}
+.d30c{border:2px solid #e0e0e0;border-radius:10px;padding:6px 2px;text-align:center;cursor:pointer;font-size:11px;font-weight:800;transition:all .2s;user-select:none}
+.d30c.on{background:var(--green);border-color:var(--green);color:#fff}
+.bdg{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
+.bdc{background:#fff;border-radius:16px;padding:16px;text-align:center;border:2px solid var(--border);transition:all .2s}
+.bdc.unlocked{border-color:var(--yellow);background:linear-gradient(135deg,#fffbe6,#fff9d0)}
+.addb{display:flex;align-items:center;gap:8px;padding:11px 14px;border:2px dashed var(--border);border-radius:13px;background:none;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;color:var(--muted);cursor:pointer;width:100%;transition:all .2s;margin-top:6px}
+.addb:hover{border-color:var(--pink);color:var(--pink)}
+.af{background:#fff;border-radius:14px;padding:14px;margin-top:8px;border:2px solid var(--pink)}
+.af input,.af select{width:100%;padding:8px 12px;border:1.5px solid var(--border);border-radius:10px;font-family:'Nunito',sans-serif;font-size:13px;margin-bottom:8px;outline:none}
+.af input:focus,.af select:focus{border-color:var(--pink)}
+.afb{display:flex;gap:8px}
+.btn{padding:8px 14px;border-radius:10px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;cursor:pointer;border:none;transition:all .2s}
+.bp{background:var(--pink);color:#fff}
+.bg{background:none;border:1.5px solid var(--border);color:var(--muted)}
+.conf{position:fixed;width:9px;height:9px;border-radius:2px;pointer-events:none;z-index:9999;animation:fall 1.6s ease-in forwards}
+@keyframes fall{from{opacity:1;transform:translateY(0) rotate(0)}to{opacity:0;transform:translateY(100vh) rotate(720deg)}}
+.rpop{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#fff;border-radius:20px;padding:14px 20px;box-shadow:0 8px 32px rgba(0,0,0,.18);display:flex;align-items:center;gap:10px;z-index:500;animation:popIn .4s cubic-bezier(.34,1.56,.64,1);white-space:nowrap}
+@keyframes popIn{from{opacity:0;transform:translateX(-50%) scale(.6) translateY(20px)}to{opacity:1;transform:translateX(-50%) scale(1) translateY(0)}}
+.bnav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:2px solid var(--border);display:flex;justify-content:space-around;padding:5px 0 8px;z-index:200}
+.bn{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:10px;font-weight:800;color:var(--muted);border:none;background:none;cursor:pointer;padding:3px 6px;transition:color .2s;min-width:46px}
+.bn.active{color:var(--pink)}
+.yr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.yrm{background:#fff;border-radius:14px;padding:12px;border-top:4px solid}
+@media(max-width:500px){.spg,.seag,.supg,.yr-grid{grid-template-columns:1fr}.zg{grid-template-columns:repeat(2,1fr)}.yr-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* ── PDF Download buttons ── */
+.pdf-dl-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,107,157,.35)!important;opacity:.95}
+.pdf-dl-btn:active{transform:translateY(0)}
+</style>
+</head>
+<body>
+
+
+<div id="ob" class="onboard">
+  <div class="obc">
+    <div style="font-size:40px;margin-bottom:6px">🧹✨</div>
+    <div class="obt">Dopamine Cleaning</div>
+    <div class="obs">Your ADHD-friendly cleaning sidekick.<br>Small wins. Zero shame. Big sparkle.</div>
+    <div class="obst">Step 1 — Pick your mode</div>
+    <div class="obos">
+      <button class="obo sel" onclick="obM(this,'guide')"><span style="font-size:22px">🧭</span><div><div style="font-weight:900">Guide Me</div><div style="font-size:11px;color:var(--muted)">Pre-filled tasks from the planner</div></div></button>
+      <button class="obo" onclick="obM(this,'custom')"><span style="font-size:22px">✏️</span><div><div style="font-weight:900">Customize My Plan</div><div style="font-size:11px;color:var(--muted)">Build your own system</div></div></button>
+    </div>
+    <div class="obst">Step 2 — Energy level right now?</div>
+    <div class="eopts">
+      <button class="eopt" onclick="obE(this,'low')" style="border-color:#A8A4CE">😴 Low</button>
+      <button class="eopt sel" onclick="obE(this,'medium')" style="border-color:#FF9F43;background:#FF9F43;color:#fff">😊 Medium</button>
+      <button class="eopt" onclick="obE(this,'high')" style="border-color:#6BCB77">🚀 High</button>
+    </div>
+    <div class="obst" style="margin-bottom:8px">Step 3 — Your name (optional)</div>
+    <input id="obN" placeholder="e.g. Sarah" style="width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:12px;font-family:'Nunito',sans-serif;font-size:14px;margin-bottom:16px;outline:none">
+    <button class="obgo" onclick="startApp()">Let's Go Clean! 🏆</button>
+    <div style="font-size:11px;color:var(--muted);margin-top:10px">No account needed · All data stays on your device</div>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="nav-logo">✨ Dopamine</div>
+  <button class="nb active" onclick="gS('dash',this)">🏠 Today</button>
+  <button class="nb" onclick="gS('zones',this)">🗂️ Zones</button>
+  <button class="nb" onclick="gS('weekly',this)">📅 Weekly</button>
+  <button class="nb" onclick="gS('sched',this)">🗓️ Schedules</button>
+  <button class="nb" onclick="gS('deep',this)">🧹 Deep Clean</button>
+  <button class="nb" onclick="gS('laundry',this)">👕 Laundry</button>
+  <button class="nb" onclick="gS('supplies',this)">🧴 Supplies</button>
+  <button class="nb" onclick="gS('hacks',this)">💡 Hacks</button>
+  <button class="nb" onclick="gS('family',this)">👨‍👩‍👧 Family</button>
+  <button class="nb" onclick="gS('yearly',this)">📆 Yearly</button>
+  <button class="nb" onclick="gS('challenges',this)">🎯 Challenges</button>
+  <button class="nb" onclick="gS('badges',this)">🏅 Badges</button>
+  <button class="nb" onclick="gS('notes',this)">📝 Notes</button>
+  <button class="nb" onclick="gS('hotspots',this)">🔥 Hotspots</button>
+  <button class="nb" onclick="gS('quotes',this)">💬 Motivation</button>
+  <button class="nb" onclick="gS('shopping',this)">🛒 Shopping</button>
+  <button class="nb" onclick="gS('mood',this)">💆 Mood & Music</button>
+  <button class="nb" onclick="gS('timeblocks',this)">⏰ Time Planner</button>
+  <button class="nb" onclick="gS('roomstatus',this)">🪴 Room Status</button>
+  <button class="nb" onclick="gS('settings',this)">⚙️ Settings</button>
+</nav>
+
+<div class="mbar">
+  <span class="ml">Mode:</span>
+  <div class="mt"><button class="mo active" id="mtG" onclick="setMode('guide')">🧭 Guide</button><button class="mo" id="mtC" onclick="setMode('custom')">✏️ Custom</button></div>
+  <span style="flex:1"></span>
+  <span class="ml">Energy:</span>
+  <select class="esel" id="enS" onchange="setEnergy(this.value)">
+    <option value="low">😴 Low</option><option value="medium" selected>😊 Medium</option><option value="high">🚀 High</option>
+  </select>
+  <span id="saveStatusBadge" style="font-size:10px;font-weight:800;color:var(--muted);white-space:nowrap;padding:3px 8px;border-radius:8px;background:#f0f0f0">💾 —</span>
+</div>
+
+<div class="main">
+
+<div id="sec-dash">
+  <div class="pt" id="gMsg">Good morning! 🌅</div>
+  <div class="ps" id="sMsg">Let's pick one tiny win ✨</div>
+  <div class="stk">
+    <div style="font-size:36px">🔥</div>
+    <div><div style="font-size:30px;font-weight:900" id="strkN">3</div><div style="font-size:13px;opacity:.9">day streak!</div></div>
+    <div style="margin-left:auto;text-align:right"><div style="font-size:22px;font-weight:900" id="ttLbl">0/10</div><div style="font-size:12px;opacity:.85">done today</div></div>
+  </div>
+  <button class="jbtn" onclick="justOne()">🎯 Tell Me What To Do<span style="font-family:'Nunito',sans-serif;font-size:13px;font-weight:600;opacity:.85;display:block;margin-top:5px">Just One Thing — I'll pick your next win</span></button>
+  <div class="srow">
+    <div class="sc"><div class="sn" style="color:var(--pink)" id="sD">0</div><div class="sl">Done ✅</div></div>
+    <div class="sc"><div class="sn" style="color:var(--orange)" id="sL">10</div><div class="sl">Left 📋</div></div>
+    <div class="sc"><div class="sn" style="color:var(--green)" id="sP">0%</div><div class="sl">Progress 🚀</div></div>
+  </div>
+  <div class="pw"><div class="pf" id="mProg" style="width:0%;background:linear-gradient(90deg,var(--pink),var(--coral))"></div></div>
+  <div class="tcard">
+    <div style="font-size:13px;font-weight:800;opacity:.8;text-align:center;margin-bottom:6px">⏱️ Focus Timer — Start Small!</div>
+    <div class="tpre">
+      <button class="tpb sel" onclick="setTmr(5,this)">5 min</button>
+      <button class="tpb" onclick="setTmr(10,this)">10 min</button>
+      <button class="tpb" onclick="setTmr(15,this)">15 min</button>
+      <button class="tpb" onclick="setTmr(20,this)">20 min</button>
+      <button class="tpb" onclick="setTmr(30,this)">30 min</button>
+    </div>
+    <div class="tdisp" id="tDisp">05:00</div>
+    <div class="tbtns"><button class="tbtn tst" onclick="togTmr()" id="tBtn">▶ Start</button><button class="tbtn" onclick="rstTmr()">↺ Reset</button></div>
+  </div>
+  <div class="st">⚡ Today's Tasks <span id="eBadge" style="background:var(--orange);color:#fff;padding:2px 10px;border-radius:8px;font-size:11px;font-weight:800">😊 Medium</span></div>
+  <div id="todayL"></div>
+  <div class="st" style="margin-top:14px">🌅 Morning Routine</div>
+  <div id="morningL"></div>
+  <div class="st" style="margin-top:14px">☀️ After Breakfast / Midday</div>
+  <div id="middayL"></div>
+  <div class="st" style="margin-top:14px">🌙 Night Routine</div>
+  <div id="nightL"></div>
+</div>
+
+<div id="sec-zones" style="display:none">
+  <div class="pt">Zone Cleaning 🗂️</div>
+  <div class="ps">FlyLady method — one zone per week, 15 min/day</div>
+  <div class="ft"><strong style="color:var(--teal)">🌟 FlyLady Zones</strong><br><span style="font-size:12px;color:var(--muted)">Each week focus on one zone. 15 min/day beats one big cleaning day every time.</span></div>
+  <div class="zg" id="zonesG"></div>
+  <div id="zoneD"></div>
+</div>
+
+<div id="sec-weekly" style="display:none">
+  <div class="pt">Weekly Schedule 📅</div>
+  <div class="ps">Each day has a focus area — check off as you go</div>
+  <div id="weeklyC"></div>
+</div>
+
+<div id="sec-sched" style="display:none">
+  <div class="pt">All Schedules 🗓️</div>
+  <div class="ps">Monthly · Quarterly · Semi-Annual · Annual · Speed Clean</div>
+  <div id="schedC"></div>
+</div>
+
+<div id="sec-deep" style="display:none">
+  <div class="pt">Deep Clean 🧹</div>
+  <div class="ps">Room-by-room deep clean — take your time, no rush!</div>
+  <div id="deepC"></div>
+</div>
+
+<div id="sec-laundry" style="display:none">
+  <div class="pt">Laundry System 👕</div>
+  <div class="ps">Weekly schedule + deep clean + pro tips</div>
+  <div id="laundryC"></div>
+</div>
+
+<div id="sec-supplies" style="display:none">
+  <div class="pt">Cleaning Supplies 🧴</div>
+  <div class="ps">Check what you have vs what you need, room by room</div>
+  <div id="suppliesC"></div>
+</div>
+
+<div id="sec-hacks" style="display:none">
+  <div class="pt">Cleaning Hacks 💡</div>
+  <div class="ps">DIY solutions from the planner — no fancy products needed</div>
+  <div id="hacksC"></div>
+</div>
+
+<div id="sec-family" style="display:none">
+  <div class="pt">Family Chore Chart 👨‍👩‍👧</div>
+  <div class="ps">Assign tasks to family members by day of week</div>
+  <div id="familyC"></div>
+</div>
+
+<div id="sec-yearly" style="display:none">
+  <div class="pt">Yearly Schedule 📆</div>
+  <div class="ps">Plan your big cleaning tasks month by month</div>
+  <div id="yearlyC"></div>
+</div>
+
+<div id="sec-challenges" style="display:none">
+  <div class="pt">Challenges 🎯</div>
+  <div class="ps">30-day declutter + seasonal deep cleans</div>
+  <div id="challengesC"></div>
+</div>
+
+<div id="sec-badges" style="display:none">
+  <div class="pt">Your Badges 🏅</div>
+  <div class="ps">Unlock rewards as you clean — you've earned it!</div>
+  <div id="badgesC"></div>
+</div>
+
+<div id="sec-notes" style="display:none">
+  <div class="pt">Notes & Journal 📝</div>
+  <div class="ps">Write thoughts, reflections, or anything on your mind</div>
+  <div id="notesC"></div>
+</div>
+
+<div id="sec-hotspots" style="display:none">
+  <div class="pt">Hotspot Tracker 🔥</div>
+  <div class="ps">Track problem clutter zones — tackle them for 5 min daily!</div>
+  <div id="hotspotsC"></div>
+</div>
+
+<div id="sec-quotes" style="display:none">
+  <div class="pt">Daily Motivation 💬</div>
+  <div class="ps">Your daily dose of encouragement — zero guilt, only kindness</div>
+  <div id="quotesC"></div>
+</div>
+
+<div id="sec-shopping" style="display:none">
+  <div class="pt">Shopping List 🛒</div>
+  <div class="ps">Quickly add items you run out of while cleaning — never forget again!</div>
+  <div id="shoppingC"></div>
+</div>
+
+<div id="sec-mood" style="display:none">
+  <div class="pt">Mood & Music 💆</div>
+  <div class="ps">Check in with yourself + pick a vibe to clean to</div>
+  <div id="moodC"></div>
+</div>
+
+<div id="sec-timeblocks" style="display:none">
+  <div class="pt">Time Block Planner ⏰</div>
+  <div class="ps">Plan your cleaning sessions by time — no more decision fatigue!</div>
+  <div id="timeblocksC"></div>
+</div>
+
+<div id="sec-roomstatus" style="display:none">
+  <div class="pt">Room Status 🪴</div>
+  <div class="ps">Quick visual of how each room looks right now — be honest, no shame!</div>
+  <div id="roomstatusC"></div>
+</div>
+
+<!-- FIX #1: sec-settings was missing its wrapping div with id — added here -->
+<div id="sec-settings" style="display:none">
+  <div class="pt">Settings ⚙️</div>
+  <div class="ps">Personalise your Dopamine Cleaning experience</div>
+  <div id="settingsC"></div>
+</div>
+
+</div><!-- end .main -->
+
+<div id="rPop" style="display:none" class="rpop">
+  <span id="rE" style="font-size:28px">🏆</span>
+  <div><div id="rT" style="font-size:14px;font-weight:800">Amazing!</div><div id="rS" style="font-size:12px;color:var(--muted)">Keep going!</div></div>
+</div>
+
+<div class="bnav">
+  <button class="bn active" onclick="gS('dash',null,this)"><span style="font-size:20px">🏠</span>Today</button>
+  <button class="bn" onclick="gS('zones',null,this)"><span style="font-size:20px">🗂️</span>Zones</button>
+  <button class="bn" onclick="gS('weekly',null,this)"><span style="font-size:20px">📅</span>Weekly</button>
+  <button class="bn" onclick="gS('deep',null,this)"><span style="font-size:20px">🧹</span>Deep</button>
+  <button class="bn" onclick="gS('badges',null,this)"><span style="font-size:20px">🏅</span>Badges</button>
+</div>
+
+
+<script>
+
+
+const D={
+  daily:[
+    {id:'d1',text:'Make your bed',e:'low',t:5},{id:'d2',text:'Wipe kitchen counters',e:'low',t:3},
+    {id:'d3',text:'Empty sink — dishes away',e:'low',t:5},{id:'d4',text:'Quick bathroom swish & swipe',e:'low',t:3},
+    {id:'d5',text:'Take out trash if full',e:'medium',t:4},{id:'d6',text:'5-min floor sweep',e:'low',t:5},
+    {id:'d7',text:'Put clothes away (off the floor!)',e:'low',t:5},{id:'d8',text:'Wipe dining table',e:'low',t:2},
+    {id:'d9',text:'Declutter one surface for 5 min',e:'medium',t:5},{id:'d10',text:'Check tomorrow\'s calendar',e:'low',t:2},
+  ],
+  morning:[
+    {id:'m1',text:'Make your bed',e:'low'},{id:'m2',text:'Get dressed to shoes',e:'low'},
+    {id:'m3',text:'Swish & swipe bathroom',e:'low'},{id:'m4',text:'Start a load of laundry',e:'medium'},
+    {id:'m5',text:'Dish soap (wash overnight dishes)',e:'low'},{id:'m6',text:'Check calendar & to-do list',e:'low'},
+  ],
+  midday:[
+    {id:'md1',text:'Declutter for 15 minutes',e:'medium'},{id:'md2',text:'Zone cleaning (15 min)',e:'medium'},
+    {id:'md3',text:'Dry & put away laundry',e:'low'},{id:'md4',text:'Check calendar, plan dinner',e:'low'},
+  ],
+  night:[
+    {id:'n1',text:'Clean up kitchen (wash dishes, wipe counters)',e:'medium'},
+    {id:'n2',text:'5-minute evening declutter',e:'low'},
+    {id:'n3',text:'Check calendar for tomorrow',e:'low'},
+    {id:'n4',text:'Prepare for bed',e:'low'},
+  ],
+  zones:[
+    {id:'z1',nm:'Entrance & Dining',icon:'🚪',col:'#FF6B9D',tasks:['Sweep/vacuum floor','Wipe all surfaces','Organize entryway','Clean light fixtures','Tidy dining table','Wipe dining chairs','Declutter mail area','Polish door handle']},
+    {id:'z2',nm:'Kitchen',icon:'🍳',col:'#4ECDC4',tasks:['Clean stovetop','Wipe all counters','Clean microwave inside','Wipe cabinet fronts','Scrub sink','Organize pantry shelf','Clean fridge outside','Sweep & mop floor']},
+    {id:'z3',nm:'Bedrooms',icon:'🛏️',col:'#4D96FF',tasks:['Change bed sheets','Vacuum/mop floor','Dust all surfaces','Organize closet section','Clean under bed','Wipe mirrors','Empty bedroom trash','Wipe light switches']},
+    {id:'z4',nm:'Bathrooms',icon:'🚿',col:'#FFD93D',tasks:['Scrub toilet inside & out','Clean shower/tub','Wipe sink & faucets','Mop floor','Replace towels','Wipe mirror','Restock supplies','Empty bathroom trash']},
+    {id:'z5',nm:'Living Room',icon:'🛋️',col:'#A8A4CE',tasks:['Vacuum sofa & cushions','Dust all surfaces','Vacuum/mop floor','Organize media area','Wipe windows','Fluff pillows','Declutter shelves','Wipe light switches']},
+  ],
+  weekly:[
+    {day:'Monday',col:'#FF6B9D',zone:'🍳 Kitchen',tasks:['Wipe all counters','Clean stovetop','Microwave inside','Wipe fridge door','Sweep & mop floor','Take out trash','Wipe backsplash']},
+    {day:'Tuesday',col:'#6BCB77',zone:'🛋️ Living Room',tasks:['Vacuum sofa','Dust all surfaces','Vacuum floor','Wipe windows','Organize decor','Wipe TV screen','Fluff cushions']},
+    {day:'Wednesday',col:'#4D96FF',zone:'🛏️ Bedrooms',tasks:['Change sheets','Vacuum floor','Dust furniture','Organize closet section','Wipe mirrors','Sweep under bed','Empty trash']},
+    {day:'Thursday',col:'#FFD93D',zone:'🚿 Bathrooms',tasks:['Scrub toilet','Clean shower','Wipe sink & taps','Mop floor','Replace towels','Restock supplies','Wipe mirror']},
+    {day:'Friday',col:'#A8A4CE',zone:'🚪 Entrance',tasks:['Vacuum entry','Wipe front door','Organize shoes','Clean light switch','Sweep porch','Tidy coat hooks']},
+    {day:'Saturday',col:'#FF6B6B',zone:'🛒 Grocery & Errands',tasks:['Grocery shop','Clean car & purse','Pet care','Meal plan next week','Thrift store run','Organize receipts']},
+    {day:'Sunday',col:'#FF9F43',zone:'🌿 Renew Your Spirit',tasks:['Home blessing hour','Water plants','Free day & rest','Declutter hotspot','Plan next week','Self care']},
+  ],
+  flyLady:[
+    {wk:'Zone 1 / Week 1',area:'Entrance, Front Porch & Dining Room',col:'#FF6B9D'},
+    {wk:'Zone 2 / Week 2',area:'Kitchen',col:'#4ECDC4'},
+    {wk:'Zone 3 / Week 3',area:'Bathroom, Bedroom, Office & Laundry',col:'#4D96FF'},
+    {wk:'Zone 4 / Week 4',area:'Master Bedroom, Bath & Closets',col:'#FFD93D'},
+    {wk:'Zone 5 / Week 5',area:'Living Room / Family Room',col:'#A8A4CE'},
+  ],
+  deepClean:[
+    {nm:'Kitchen',icon:'🍳',col:'#c084fc',tasks:['Degrease stovetop & burners','Clean oven inside','Wipe cabinets inside & out','Scrub sink + drain','Descale kettle','Clean fridge inside','Defrost freezer','Wipe light fixtures','Sweep & mop thoroughly','Clean dishwasher filter','Wipe walls near stove','Organize under-sink']},
+    {nm:'Bathroom',icon:'🚿',col:'#22d3ee',tasks:['Scrub grout lines','Descale showerhead','Deep clean toilet (under rim)','Wipe ceiling & vents','Clean drain','Wash shower curtain','Polish mirrors','Wipe walls','Mop with disinfectant','Replace worn items','Clean cabinet inside','Wash bath mat']},
+    {nm:'Bedroom',icon:'🛏️',col:'#a78bfa',tasks:['Flip/rotate mattress','Wash all bedding + pillows','Vacuum under & behind furniture','Dust blinds & curtains','Wipe baseboards','Clean light fixtures','Organize wardrobe fully','Vacuum closet floor','Wipe all surfaces','Clean windows inside','Dust ceiling fan','Check under bed']},
+    {nm:'Living Room',icon:'🛋️',col:'#fbbf24',tasks:['Deep vacuum sofa','Dust books & shelves','Wipe skirting boards','Clean windows inside','Vacuum under furniture','Polish wooden surfaces','Wash throw blankets','Dust ceiling fan','Wipe light switches','Organize media cables','Clean remote controls','Wipe TV screen']},
+    {nm:'Office',icon:'💼',col:'#4ade80',tasks:['Wipe all desk surfaces','Dust monitor & electronics','Organize cables','Wipe keyboard & mouse','Clean chair','File/shred old papers','Dust shelves & books','Vacuum floor','Wipe light switches','Tidy desk drawers','Wipe phone','Dust vents']},
+    {nm:'Outdoor',icon:'🌿',col:'#34d399',tasks:['Sweep porch/patio','Clean outdoor furniture','Wipe windows outside','Clear gutters','Pressure wash','Weed near entrance','Clean door & handle','Sweep steps','Hose down bins','Organize outdoor storage','Check exterior lights','Clean BBQ/grill']},
+    {nm:'Garage',icon:'🏠',col:'#94a3b8',tasks:['Sweep entire floor','Organize tools','Clear clutter: keep/donate/trash','Wipe shelves','Check for pests','Dispose of old chemicals','Wipe workbench','Label boxes','Check for water damage','Organize sports gear','Sweep cobwebs','Check light bulbs']},
+    {nm:'Laundry Room',icon:'🧺',col:'#f472b6',tasks:['Clean washing machine drum','Wipe machine exterior','Clear lint trap & vent','Wipe behind machines','Organize laundry products','Wipe shelves','Sweep & mop floor','Check hoses for leaks','Discard expired items','Restock supplies']},
+    {nm:'Enterway',icon:'🚪',col:'#fb923c',tasks:['Deep clean floor','Wipe front door inside & out','Clean light fixtures','Organize shoe rack','Wipe walls near entry','Clean coat hooks','Polish door handle','Vacuum runner/mat','Wipe skirting boards','Organize keys/mail area']},
+    {nm:'Playroom',icon:'🧸',col:'#fde047',tasks:['Wash soft toys','Organize toys into categories','Wipe all hard toys','Vacuum/mop floor','Wipe shelves','Declutter broken toys','Wipe walls (fingerprints)','Clean activity table','Check for small parts','Rotate toys to storage']},
+    {nm:'Storage',icon:'📦',col:'#86efac',tasks:['Sort all items: keep/donate/trash','Label all boxes clearly','Organize by category','Wipe down all shelves','Sweep/vacuum floor','Check for moisture or pests','Dispose of old/unused items','Stack neatly with access in mind','Update home inventory','Donate items in good condition']},
+  ],
+  laundryDays:[
+    {day:'Monday',type:'Towels & Linens',col:'#4D96FF',note:'All bathroom & kitchen towels'},
+    {day:'Tuesday',type:'White Clothes',col:'#6BCB77',note:'Whites only — add baking soda'},
+    {day:'Wednesday',type:'Dark Clothes',col:'#A8A4CE',note:'Turn inside out to protect colors'},
+    {day:'Thursday',type:'Delicate Clothing',col:'#FF9F43',note:'Cold water, gentle cycle — air dry'},
+    {day:'Friday',type:'Workout Clothing',col:'#FF6B9D',note:'Wash promptly to prevent odor'},
+    {day:'Saturday',type:'Bedding',col:'#FF6B6B',note:'Full bedding set — all beds'},
+    {day:'Sunday',type:'REST 💙',col:'#4ECDC4',note:'No laundry today! Rest & recharge'},
+  ],
+  laundryTips:['Turn clothes inside out to protect colors','Wash towels separately for better drying','Use cold water to prevent shrinking','Treat stains immediately for easier removal','Air dry delicate items to extend their life','Clean washing machine drum monthly','Zip zippers before washing to prevent snagging','Use dryer balls to cut drying time naturally','Don\'t overload — clothes need room to get clean','Keep laundry sorted by color throughout the week'],
+  supplies:{
+    'Kitchen':['All-purpose cleaner','Dish soap & sponges','Microfiber cloths','Degreaser spray','Scrubbing pads','Trash bags','Paper towels','Baking soda','White vinegar','Rubber gloves'],
+    'Bathrooms':['Toilet bowl cleaner + brush','Disinfectant spray','Scrubbing sponge','Microfiber cloths','Glass cleaner','Mold & mildew spray','Rubber gloves','Drain cleaner','Old toothbrush (grout)','Bathroom freshener'],
+    'Laundry':['Laundry detergent','Fabric softener or dryer balls','Stain remover spray','Mesh laundry bags','Bleach (whites only)','Lint roller','Dryer sheets','Color-catch sheets'],
+    'Outdoor':['Broom & dustpan','Garden hose','Outdoor surface cleaner','Trash bags','Work gloves','Weed killer','Bug spray','Pressure washer (optional)'],
+    'Garage':['Heavy-duty trash bags','Degreaser','Broom & dustpan','Labels & markers','Storage bins','Work gloves','Pest traps'],
+    'Office':['Screen cleaner','Microfiber cloth','Compressed air duster','Disinfectant wipes','Cable organizers','Trash bags'],
+  },
+  hacks:[
+    {title:'Microwave',desc:'Heat water + lemon slices for 5 min. Let steam sit 2 min, then wipe everything clean easily.'},
+    {title:'DIY Air Freshener',desc:'Mix water + a few drops of essential oil in a spray bottle. Mist on fabrics lightly.'},
+    {title:'Toilet Cleaner',desc:'Sprinkle baking soda, add white vinegar, let fizz 15 min, scrub and flush.'},
+    {title:'Windows & Mirrors',desc:'Spray white vinegar + water (1:1). Wipe with microfiber cloth for streak-free shine.'},
+    {title:'Stainless Steel Polish',desc:'A few drops of olive oil on a soft cloth. Buff in direction of the grain. Beautiful!'},
+    {title:'Furniture Polish',desc:'Mix olive oil + lemon juice. Apply lightly on wooden surfaces with a cloth.'},
+    {title:'Garbage Disposal Smell',desc:'Ice cubes + lemon peel + salt. Run disposal for 30 seconds. Fresh instantly!'},
+    {title:'Shower Glass Shine',desc:'Vinegar + a drop of dish soap. Wait 10 min, rinse for crystal-clear glass.'},
+    {title:'Plastic Chairs',desc:'Baking soda paste. Scrub, then rinse well to brighten dull plastic.'},
+    {title:'Shiny Sink Motivation',desc:'Start every session by making your sink shine. Tiny win that builds momentum!'},
+    {title:'Carpet Stains',desc:'Blot (don\'t rub!), apply dish soap + cold water, blot again. Baking soda + vinegar for tough ones.'},
+    {title:'Mattress Refresh',desc:'Sprinkle baking soda, leave 30 min, vacuum up. Neutralizes odors naturally.'},
+  ],
+  seasonal:{
+    spring:['Deep clean all windows inside & out','Wash all curtains & blinds','Declutter and donate winter clothes','Clean gutters and downspouts','Power wash outdoor areas','Switch to lighter bedding','Organize and restock pantry','Service AC units','Test smoke & CO detectors','Deep clean all carpets'],
+    summer:['Clean outdoor furniture','Organize garage & shed','Deep clean fridge & freezer','Wash patio/deck','Service lawn equipment','Clean ceiling fans','Descale appliances','Organize kids\' toys','Pest prevention check','Freshen outdoor spaces'],
+    autumn:['Rake & clear fallen leaves','Store outdoor furniture','Switch to winter bedding','Seal windows and doors','Deep clean the oven','Organize winter gear & coats','Check chimney/fireplace','Check heating system','Wash heavy blankets','Organize holiday storage'],
+    winter:['Declutter holiday decorations','Deep clean post-holiday','Organize gift wrap storage','Deep clean post-cooking kitchen','Wash heavy curtains','Check for draughts','Organize medicine cabinet','Deep clean rugs','Update home inventory','Plan spring cleaning now'],
+  },
+  badges:[
+    {name:'Dust Bunny Slayer',emoji:'🐰',desc:'Complete 5 tasks',req:5,type:'done'},
+    {name:'Kitchen Wizard',emoji:'🧙‍♀️',desc:'Complete 10 tasks',req:10,type:'done'},
+    {name:'Laundry Legend',emoji:'👕',desc:'Complete 20 tasks',req:20,type:'done'},
+    {name:'Zone Master',emoji:'🗺️',desc:'Finish an entire zone',req:1,type:'zone'},
+    {name:'Streak Starter',emoji:'🔥',desc:'3-day streak',req:3,type:'streak'},
+    {name:'Deep Cleaner',emoji:'💪',desc:'5 deep clean tasks',req:5,type:'dc'},
+    {name:'Speed Queen',emoji:'⚡',desc:'5 speed clean tasks',req:5,type:'speed'},
+    {name:'Sparkling Home',emoji:'✨',desc:'50 tasks total',req:50,type:'done'},
+    {name:'Declutter Hero',emoji:'📦',desc:'10 challenge days',req:10,type:'ch30'},
+    {name:'Morning Warrior',emoji:'🌅',desc:'Full morning routine',req:6,type:'morning'},
+    {name:'Supply Pro',emoji:'🧴',desc:'Track 10 supplies',req:10,type:'supply'},
+    {name:'Family Champ',emoji:'👨‍👩‍👧',desc:'Assign 7 chores',req:7,type:'family'},
+  ],
+  months:['January','February','March','April','May','June','July','August','September','October','November','December'],
+  mCols:['#e0e0e0','#fca5a5','#4ade80','#60a5fa','#f97316','#a78bfa','#ef4444','#f472b6','#fb923c','#60a5fa','#4ade80','#a78bfa'],
+};
+
+/* ═══════════════════════════════════════════════════════════════
+   PERSISTENCE — Firebase Firestore (cloud) + browser fallbacks
+   ═══════════════════════════════════════════════════════════════
+   ROOT CAUSE FIX: window.storage is Claude Artifacts-only and does
+   not exist on Netlify. Browser storage (localStorage, IndexedDB,
+   cookies) is BLOCKED by Safari/iOS ITP for cross-origin iframes
+   like Whop embeds. fetch() calls to Firebase are NOT affected.
+
+   This version uses Firebase Firestore REST API with Anonymous Auth
+   so data lives on the server and survives app close / device switch.
+
+   SETUP REQUIRED (one-time, in Firebase Console):
+   1. Enable Firestore → Start in TEST mode (or use the rules below)
+   2. Enable Authentication → Anonymous sign-in method
+   3. Firestore Rules:
+      match /users/{uid} { allow read, write: if true; }
+      (Secure later with: if request.auth != null && request.auth.uid == uid)
+   ═══════════════════════════════════════════════════════════════ */
+
+const SAVE_KEY = 'dopamine_cleaning_v1';
+const S_DEFAULTS = {mode:'guide',energy:'medium',name:'',streak:3,checked:{},dc:{},timerMins:5,timerSecs:300,timerRunning:false,timerIv:null,activeZone:null,customZoneTasks:{},yearlyTasks:{},familyMembers:['Person 1','Person 2','Person 3','Person 4'],notes:{entries:[],reflection:{week:'',mood:'',wins:'',nextWeek:''}},hotspots:{spots:[{id:'h1',name:'Kitchen counter',streak:0},{id:'h2',name:'Bedroom floor pile',streak:0},{id:'h3',name:'Bathroom counter',streak:0}]},darkMode:false,autoSave:true};
+
+/* ── Firebase config ── */
+const _FB_KEY  = 'AIzaSyBPvhnMaszXWQJZCPMyOU08GAiHrxynRgM';
+const _FB_PROJ = 'threehuneighty';
+const _FS_BASE = `https://firestore.googleapis.com/v1/projects/${_FB_PROJ}/databases/(default)/documents`;
+
+/* ── Auth state ── */
+let _fbUID = null, _fbIDToken = null, _fbRefresh = null, _fbCloudOK = false;
+
+/* ── Stable user ID: Netlify function verifies x-whop-user-token → Firebase fallback ── */
+let _whopUIDCache=null;
+async function _fetchWhopUID(){
+  if(_whopUIDCache)return _whopUIDCache;
+  try{
+    /* Call same-origin Netlify function — Whop auto-injects x-whop-user-token on this request */
+    const r=await fetch('/api/whoami');
+    if(!r.ok)return null;
+    const d=await r.json();
+    if(d&&d.userId){_whopUIDCache='w_'+d.userId;return _whopUIDCache;}
+  }catch(e){console.warn('Whop token fetch failed:',e);}
+  return null;
+}
+
+async function _getUID(){
+  if(_fbUID)return _fbUID;
+  /* Primary: verify via Netlify function (reads x-whop-user-token header set by Whop) */
+  const wuid=await _fetchWhopUID();
+  if(wuid){_fbUID=wuid;return _fbUID;}
+  /* Try stored refresh token from any browser layer */
+  const stored=_loadAuthCache();
+  if(stored){_fbUID=stored.uid;_fbRefresh=stored.refresh;if(await _refreshIDToken())return _fbUID;}
+  /* Also try IndexedDB (async — persists when localStorage is blocked by Safari ITP) */
+  const idbRaw=await _idbGet('_dcauth','tok');
+  if(idbRaw){try{const a=JSON.parse(idbRaw);if(a.uid&&a.refresh){_fbUID=a.uid;_fbRefresh=a.refresh;if(await _refreshIDToken())return _fbUID;}}catch(e){}}
+  /* Last resort: create a new anonymous Firebase user */
+  await _signInAnon();
+  return _fbUID;
+}
+
+async function _signInAnon(){
+  try{
+    const r=await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${_FB_KEY}`,
+      {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({returnSecureToken:true})});
+    const d=await r.json();
+    if(!d.localId)return false;
+    _fbUID=d.localId;_fbIDToken=d.idToken;_fbRefresh=d.refreshToken;
+    _saveAuthCache(_fbUID,_fbRefresh);return true;
+  }catch(e){return false;}
+}
+
+async function _refreshIDToken(){
+  if(!_fbRefresh)return false;
+  try{
+    const r=await fetch(`https://securetoken.googleapis.com/v1/token?key=${_FB_KEY}`,
+      {method:'POST',headers:{'Content-Type':'application/json'},
+       body:JSON.stringify({grant_type:'refresh_token',refresh_token:_fbRefresh})});
+    const d=await r.json();
+    if(!d.id_token)return false;
+    _fbIDToken=d.id_token;_fbRefresh=d.refresh_token;
+    if(_fbUID)_saveAuthCache(_fbUID,_fbRefresh);return true;
+  }catch(e){return false;}
+}
+
+/* Store auth in EVERY available layer — Safari blocks localStorage in iframes,
+   so we also hit sessionStorage, cookies, and IndexedDB */
+function _saveAuthCache(uid,refresh){
+  const v=JSON.stringify({uid,refresh});
+  try{localStorage.setItem('_dca',v);}catch(e){}
+  try{sessionStorage.setItem('_dca',v);}catch(e){}
+  try{document.cookie=`_dca=${encodeURIComponent(v)};expires=Fri,31 Dec 9999 23:59:59 GMT;path=/;SameSite=None;Secure`;}catch(e){}
+  _idbSet('_dcauth','tok',v);
+}
+function _loadAuthCache(){
+  let raw=null;
+  try{raw=localStorage.getItem('_dca');}catch(e){}
+  if(!raw)try{raw=sessionStorage.getItem('_dca');}catch(e){}
+  if(!raw){const m=document.cookie.match(/_dca=([^;]+)/);if(m)try{raw=decodeURIComponent(m[1]);}catch(e){}}
+  if(!raw)return null;
+  try{const p=JSON.parse(raw);return(p.uid&&p.refresh)?p:null;}catch(e){return null;}
+}
+
+/* ── IndexedDB helpers (two stores: saveState + _dcauth) ── */
+const DB_NAME='DopamineCleaningDB';const DB_STORE='saveState';const DB_KEY='main';
+function openDB(){return new Promise((res,rej)=>{const q=indexedDB.open(DB_NAME,2);q.onerror=()=>rej(q.error);q.onsuccess=()=>res(q.result);q.onupgradeneeded=(e)=>{const db=e.target.result;if(!db.objectStoreNames.contains(DB_STORE))db.createObjectStore(DB_STORE);if(!db.objectStoreNames.contains('_dcauth'))db.createObjectStore('_dcauth');}});}
+async function saveToDB(data){try{const db=await openDB();const tx=db.transaction(DB_STORE,'readwrite');await new Promise((r,j)=>{const q=tx.objectStore(DB_STORE).put(data,DB_KEY);q.onsuccess=r;q.onerror=()=>j(q.error);});db.close();return true;}catch(e){return false;}}
+async function loadFromDB(){try{const db=await openDB();const tx=db.transaction(DB_STORE,'readonly');const data=await new Promise((r,j)=>{const q=tx.objectStore(DB_STORE).get(DB_KEY);q.onsuccess=()=>r(q.result);q.onerror=()=>j(q.error);});db.close();return data;}catch(e){return null;}}
+async function _idbSet(store,key,val){try{const db=await openDB();const tx=db.transaction(store,'readwrite');tx.objectStore(store).put(val,key);db.close();}catch(e){}}
+async function _idbGet(store,key){return new Promise(async res=>{try{const db=await openDB();const tx=db.transaction(store,'readonly');const q=tx.objectStore(store).get(key);q.onsuccess=()=>res(q.result||null);q.onerror=()=>res(null);}catch(e){res(null);}});}
+
+/* ── Firestore auth headers (skip for Whop UIDs — use open rules) ── */
+async function _authHdrs(){
+  if(_fbUID&&_fbUID.startsWith('w_'))return{};
+  if(!_fbIDToken)await _refreshIDToken();
+  if(!_fbIDToken){await _signInAnon();}
+  return _fbIDToken?{'Authorization':'Bearer '+_fbIDToken}:{};
+}
+
+/* ══════════════════════════════════════════════════════════════
+   CLOUD SAVE / LOAD  —  Firestore REST API
+   Data is stored as a JSON string inside one Firestore field
+   so nested objects never get mis-typed by Firestore's format.
+   ══════════════════════════════════════════════════════════════ */
+async function saveToCloud(data){
+  try{
+    const uid=await _getUID();if(!uid)return false;
+    const hdrs=await _authHdrs();
+    const res=await fetch(`${_FS_BASE}/users/${uid}?key=${_FB_KEY}`,{
+      method:'PATCH',
+      headers:{'Content-Type':'application/json',...hdrs},
+      body:JSON.stringify({fields:{p:{stringValue:JSON.stringify(data)},t:{stringValue:new Date().toISOString()}}})
+    });
+    _fbCloudOK=res.ok;return res.ok;
+  }catch(e){_fbCloudOK=false;return false;}
+}
+async function loadFromCloud(){
+  try{
+    const uid=await _getUID();if(!uid)return null;
+    const hdrs=await _authHdrs();
+    const res=await fetch(`${_FS_BASE}/users/${uid}?key=${_FB_KEY}`,{headers:hdrs});
+    if(!res.ok)return null;
+    const doc=await res.json();
+    const sv=doc?.fields?.p?.stringValue;if(!sv)return null;
+    const parsed=JSON.parse(sv);
+    _fbCloudOK=true;return parsed?._savedAt?parsed:null;
+  }catch(e){_fbCloudOK=false;return null;}
+}
+
+/* ── localStorage ── */
+function saveToLS(data){try{localStorage.setItem(SAVE_KEY,JSON.stringify(data));return true;}catch(e){return false;}}
+function loadFromLS(){try{const r=localStorage.getItem(SAVE_KEY);if(!r)return null;return JSON.parse(r);}catch(e){return null;}}
+
+/* ── sessionStorage ── */
+function saveToSS(data){try{sessionStorage.setItem(SAVE_KEY,JSON.stringify(data));return true;}catch(e){return false;}}
+function loadFromSS(){try{const r=sessionStorage.getItem(SAVE_KEY);if(!r)return null;return JSON.parse(r);}catch(e){return null;}}
+
+/* ── Cookie chunks ── */
+function saveToCookie(data){
+  try{const json=JSON.stringify(data);const cs=3500;const chunks=Math.ceil(json.length/cs);for(let i=0;i<10;i++)document.cookie='dc_save_'+i+'=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';document.cookie='dc_chunks='+chunks+'; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/';for(let i=0;i<chunks;i++){const chunk=json.slice(i*cs,(i+1)*cs);document.cookie='dc_save_'+i+'='+encodeURIComponent(chunk)+'; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/';}return true;}catch(e){return false;}
+}
+function loadFromCookie(){
+  try{const c=document.cookie;const m=c.match(/dc_chunks=(\d+)/);if(!m)return null;const chunks=parseInt(m[1]);let json='';for(let i=0;i<chunks;i++){const rx=new RegExp('dc_save_'+i+'=([^;]+)');const match=c.match(rx);if(!match)return null;json+=decodeURIComponent(match[1]);}const p=JSON.parse(json);return p&&p._savedAt?p:null;}catch(e){return null;}
+}
+
+/* ── window.name ── */
+function saveToWN(data){try{window.name=JSON.stringify(data);return true;}catch(e){return false;}}
+function loadFromWN(){try{if(!window.name||window.name.length<10)return null;const p=JSON.parse(window.name);return p&&p._savedAt?p:null;}catch(e){return null;}}
+
+/* ── Pick most recently saved ── */
+function pickFreshest(candidates){
+  return candidates.filter(d=>d&&d._savedAt).sort((a,b)=>new Date(b._savedAt)-new Date(a._savedAt))[0]||null;
+}
+
+/* ── Synchronous load (immediate, no await) ── */
+function loadStateSync(){
+  return pickFreshest([loadFromLS(),loadFromSS(),loadFromCookie(),loadFromWN()]);
+}
+
+/* ── Async load (Firestore + IndexedDB + all sync layers) ── */
+async function loadStateFull(){
+  const [cloudData,dbData]=await Promise.allSettled([loadFromCloud(),loadFromDB()]);
+  const candidates=[
+    cloudData.status==='fulfilled'?cloudData.value:null,
+    dbData.status==='fulfilled'?dbData.value:null,
+    loadFromLS(),loadFromSS(),loadFromCookie(),loadFromWN()
+  ];
+  return pickFreshest(candidates);
+}
+
+/* ── Debounced master save ── */
+let _saveDebounce=null;
+function saveState(){clearTimeout(_saveDebounce);_saveDebounce=setTimeout(_doSave,300);}
+function _doSave(){
+  try{
+    const toSave={...S,_savedAt:new Date().toISOString()};
+    delete toSave.timerIv;
+    saveToCloud(toSave);   /* server-side — survives everything */
+    saveToDB(toSave);
+    saveToLS(toSave);saveToSS(toSave);saveToCookie(toSave);saveToWN(toSave);
+    const badge=document.getElementById('saveStatusBadge');
+    if(badge){
+      const t=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+      if(_fbCloudOK){
+        badge.textContent='☁️ Synced '+t;
+        badge.style.background='#e8f4ff';badge.style.color='#4D96FF';
+        badge.title='Saved to Firebase — safe even if you close the app';
+      }else{
+        badge.textContent='💾 Saved '+t;
+        badge.style.background='#e8fff5';badge.style.color='var(--green)';
+        badge.title='Saved locally — Firebase sync will retry on next save';
+      }
+    }
+    const lbl=document.getElementById('lastSavedLbl');
+    if(lbl)lbl.textContent='✅ Just now';
+  }catch(e){
+    console.warn('Save error:',e);
+    const badge=document.getElementById('saveStatusBadge');
+    if(badge){badge.textContent='⚠️ Save failed';badge.style.background='#fff5f5';badge.style.color='var(--coral)';}
+  }
+}
+
+/* ── Boot: load sync immediately, then upgrade from async layers ── */
+const _saved=loadStateSync();
+let S=_saved?Object.assign({},S_DEFAULTS,_saved,{timerIv:null,timerRunning:false}):{...S_DEFAULTS};
+
+(async function syncLayers(){
+  try{
+    const fullData=await loadStateFull();
+    if(fullData&&fullData._savedAt){
+      const fullTime=new Date(fullData._savedAt).getTime();
+      const syncTime=_saved&&_saved._savedAt?new Date(_saved._savedAt).getTime():0;
+      if(fullTime>syncTime){
+        const wasEmpty=!_saved;
+        S=Object.assign({},S_DEFAULTS,fullData,{timerIv:null,timerRunning:false});
+        if(typeof renderAll==='function')renderAll();
+        if(wasEmpty&&typeof showR==='function'){
+          const done=Object.values(S.checked).filter(Boolean).length;
+          if(done>0)setTimeout(()=>showR('☁️','Progress restored!','Found '+done+' completed tasks ✨'),800);
+        }
+      }
+    }
+    const badge=document.getElementById('saveStatusBadge');
+    if(badge&&_fbCloudOK){
+      badge.textContent='☁️ Firebase connected';
+      badge.style.background='#e8f4ff';badge.style.color='#4D96FF';
+    }
+  }catch(e){console.warn('syncLayers error:',e);}
+})();
+/* ── Export / Import / Copy-Paste Code ── */
+function exportBackup(){
+  try{
+    const toSave={...S,_savedAt:new Date().toISOString()};delete toSave.timerIv;
+    const blob=new Blob([JSON.stringify(toSave,null,2)],{type:'application/json'});
+    const url=URL.createObjectURL(blob);const a=document.createElement('a');
+    a.href=url;a.download='dopamine-cleaning-backup-'+new Date().toISOString().slice(0,10)+'.json';
+    document.body.appendChild(a);a.click();
+    setTimeout(()=>{document.body.removeChild(a);URL.revokeObjectURL(url);},100);
+    showR('💾','Backup downloaded!','Save this file somewhere safe ✨');
+  }catch(e){showR('❌','Export failed','Please try again');}
+}
+function importBackup(){
+  const input=document.createElement('input');input.type='file';input.accept='.json';
+  input.onchange=async function(e){
+    const file=e.target.files[0];if(!file)return;
+    try{
+      const text=await file.text();const data=JSON.parse(text);
+      if(!data||!data._savedAt){showR('❌','Invalid backup file','Please select a valid backup');return;}
+      if(!confirm('This will replace all current data with the backup. Continue?'))return;
+      S=Object.assign({},S_DEFAULTS,data,{timerIv:null,timerRunning:false});
+      saveState();renderAll();showR('✅','Backup restored!','All your data is back ✨');
+    }catch(err){showR('❌','Import failed','Make sure it\'s a valid backup file');}
+  };
+  input.click();
+}
+function copySaveCode(){
+  try{
+    const toSave={...S,_savedAt:new Date().toISOString()};delete toSave.timerIv;
+    const code=btoa(encodeURIComponent(JSON.stringify(toSave)));
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(code).then(()=>showR('📋','Save code copied!','Paste it in Notes, iMessage, anywhere safe')).catch(()=>fallbackCopy(code));
+    }else{fallbackCopy(code);}
+  }catch(e){showR('❌','Copy failed','Please try again');}
+}
+function fallbackCopy(code){
+  const ta=document.createElement('textarea');ta.value=code;ta.style.cssText='position:fixed;top:-9999px;left:-9999px;opacity:0;';
+  document.body.appendChild(ta);ta.focus();ta.setSelectionRange(0,code.length);
+  try{const ok=document.execCommand('copy');document.body.removeChild(ta);if(ok)showR('📋','Save code copied!','Paste it in Notes, iMessage, anywhere safe');else showCodeModal(code);}
+  catch(err){document.body.removeChild(ta);showCodeModal(code);}
+}
+function showCodeModal(code){
+  const e=document.getElementById('codeModal');if(e)e.remove();
+  const modal=document.createElement('div');modal.id='codeModal';
+  modal.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,0.85);display:flex;align-items:center;justify-content:center;z-index:9999;padding:20px;';
+  modal.innerHTML=`<div style="background:#fff;border-radius:24px;padding:24px;max-width:400px;width:100%;"><div style="font-size:20px;font-weight:900;margin-bottom:8px">📋 Your Save Code</div><div style="font-size:13px;color:#777;margin-bottom:16px;line-height:1.5">Copy this code and save it somewhere safe (Notes, iMessage, etc).</div><textarea readonly onclick="this.select()" style="width:100%;min-height:120px;padding:14px;border:2px solid #ddd;border-radius:14px;font-family:monospace;font-size:12px;resize:vertical;outline:none;line-height:1.5;margin-bottom:16px;background:#f8f8ff">${code}</textarea><button onclick="document.getElementById('codeModal').remove()" style="width:100%;padding:14px;background:linear-gradient(135deg,#FF6B9D,#FF6B6B);color:#fff;border:none;border-radius:14px;font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;cursor:pointer">Close</button></div>`;
+  document.body.appendChild(modal);
+}
+function pasteSaveCode(){
+  if(navigator.clipboard&&navigator.clipboard.readText){
+    navigator.clipboard.readText().then(text=>{if(text&&text.trim().length>10)autoRestoreFromCode(text.trim());else showPasteModal();}).catch(()=>showPasteModal());
+  }else{showPasteModal();}
+}
+function autoRestoreFromCode(code){
+  try{
+    const json=decodeURIComponent(atob(code));const data=JSON.parse(json);
+    if(!data||!data._savedAt){showR('❌','Invalid code','The clipboard content is not a valid save code');return;}
+    const e=document.getElementById('pasteModal');if(e)e.remove();
+    const modal=document.createElement('div');modal.id='pasteModal';
+    modal.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,0.85);display:flex;align-items:center;justify-content:center;z-index:9999;padding:20px;';
+    modal.innerHTML=`<div style="background:#fff;border-radius:24px;padding:24px;max-width:400px;width:100%;text-align:center"><div style="font-size:40px;margin-bottom:8px">⚠️</div><div style="font-size:18px;font-weight:900;margin-bottom:8px">Replace All Data?</div><div style="font-size:13px;color:#777;margin-bottom:20px;line-height:1.5">Found a save code in your clipboard. This will overwrite your current progress.</div><div style="display:flex;gap:10px"><button onclick="confirmAutoRestore()" style="flex:1;padding:14px;background:linear-gradient(135deg,#FF6B9D,#FF6B6B);color:#fff;border:none;border-radius:14px;font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;cursor:pointer">Yes, Restore</button><button onclick="document.getElementById('pasteModal').remove();showPasteModal()" style="padding:14px 20px;background:#f0f0f0;color:#666;border:none;border-radius:14px;font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;cursor:pointer">Paste Different</button></div></div>`;
+    document.body.appendChild(modal);window._pendingRestoreCode=code;
+  }catch(e){showR('❌','Invalid code','Please check and try again');}
+}
+function confirmAutoRestore(){
+  const code=window._pendingRestoreCode;if(!code)return;
+  try{const json=decodeURIComponent(atob(code));const data=JSON.parse(json);S=Object.assign({},S_DEFAULTS,data,{timerIv:null,timerRunning:false});saveState();renderAll();const m=document.getElementById('pasteModal');if(m)m.remove();delete window._pendingRestoreCode;showR('✅','Progress restored!','Welcome back ✨');}
+  catch(e){showR('❌','Restore failed','Please try again');}
+}
+function showPasteModal(){
+  const e=document.getElementById('pasteModal');if(e)e.remove();
+  const modal=document.createElement('div');modal.id='pasteModal';
+  modal.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,0.85);display:flex;align-items:center;justify-content:center;z-index:9999;padding:20px;';
+  modal.innerHTML=`<div style="background:#fff;border-radius:24px;padding:24px;max-width:400px;width:100%;max-height:80vh;overflow-y:auto;"><div style="font-size:20px;font-weight:900;margin-bottom:8px">📋 Paste Save Code</div><div style="font-size:13px;color:#777;margin-bottom:16px;line-height:1.5">Paste your save code below. Long-press the box and tap <b>Paste</b>.</div><textarea id="pasteArea" placeholder="Paste code here..." style="width:100%;min-height:120px;padding:14px;border:2px solid #ddd;border-radius:14px;font-family:monospace;font-size:13px;resize:vertical;outline:none;line-height:1.5;margin-bottom:16px"></textarea><div style="display:flex;gap:10px"><button onclick="doPasteRestore()" style="flex:1;padding:14px;background:linear-gradient(135deg,#FF6B9D,#FF6B6B);color:#fff;border:none;border-radius:14px;font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;cursor:pointer">✅ Restore Progress</button><button onclick="document.getElementById('pasteModal').remove()" style="padding:14px 20px;background:#f0f0f0;color:#666;border:none;border-radius:14px;font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;cursor:pointer">Cancel</button></div></div>`;
+  document.body.appendChild(modal);setTimeout(()=>{const ta=document.getElementById('pasteArea');if(ta)ta.focus();},300);
+}
+function doPasteRestore(){
+  const ta=document.getElementById('pasteArea');if(!ta)return;
+  const code=ta.value.trim();if(!code||code.length<10){showR('❌','Empty code','Please paste your save code first');return;}
+  try{
+    const json=decodeURIComponent(atob(code));const data=JSON.parse(json);
+    if(!data||!data._savedAt){showR('❌','Invalid code','The code you pasted is not valid');return;}
+    const modal=document.getElementById('pasteModal');
+    if(modal)modal.innerHTML=`<div style="background:#fff;border-radius:24px;padding:24px;max-width:400px;width:100%;text-align:center"><div style="font-size:40px;margin-bottom:8px">⚠️</div><div style="font-size:18px;font-weight:900;margin-bottom:8px">Replace All Data?</div><div style="font-size:13px;color:#777;margin-bottom:20px;line-height:1.5">This will overwrite your current progress with the saved code.</div><div style="display:flex;gap:10px"><button onclick="confirmPasteRestore('${code}')" style="flex:1;padding:14px;background:linear-gradient(135deg,#FF6B9D,#FF6B6B);color:#fff;border:none;border-radius:14px;font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;cursor:pointer">Yes, Restore</button><button onclick="document.getElementById('pasteModal').remove()" style="padding:14px 20px;background:#f0f0f0;color:#666;border:none;border-radius:14px;font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;cursor:pointer">Cancel</button></div></div>`;
+  }catch(e){showR('❌','Invalid code','Please check and try again');}
+}
+function confirmPasteRestore(code){
+  if(!code){const ta=document.getElementById('pasteArea');if(!ta)return;code=ta.value.trim();}
+  try{const json=decodeURIComponent(atob(code));const data=JSON.parse(json);S=Object.assign({},S_DEFAULTS,data,{timerIv:null,timerRunning:false});saveState();renderAll();const m=document.getElementById('pasteModal');if(m)m.remove();showR('✅','Progress restored!','Welcome back ✨');}
+  catch(e){showR('❌','Restore failed','Please try again');}
+}
+const _autoSave=()=>{if(S.autoSave)saveState();};
+const eC=e=>e==='low'?'#A8A4CE':e==='medium'?'#FF9F43':'#6BCB77';
+const eI=e=>e==='low'?'😴':e==='medium'?'😊':'🚀';
+const fmt=(m,s)=>String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+const $=id=>document.getElementById(id);
+const MSGS=['You crushed it yesterday 💥 One small win today?','Let\'s pick one tiny win ✨','You\'re doing amazing! One task at a time 🌟','Small steps = big sparkle ✨','Done is better than perfect! 🎯','You\'ve got this! One room at a time 🏠'];
+const RWD=[{e:'🏆',t:'You\'re a Winner!',s:'Dust Bunny Slayer vibes!'},{e:'✨',t:'Sparkling!',s:'You just leveled up!'},{e:'🌟',t:'Star Cleaner!',s:'Another win for the books!'},{e:'🎊',t:'Woohoo!',s:'Absolutely on fire today!'},{e:'💪',t:'That\'s it!',s:'Small wins = big results!'},{e:'🦋',t:'Transformed!',s:'Your space loves you back!'},{e:'🎉',t:'Yes!!',s:'Kitchen Wizard unlocked!'}];
+
+function obM(btn,m){document.querySelectorAll('.obo').forEach(b=>b.classList.remove('sel'));btn.classList.add('sel');S.mode=m;}
+function obE(btn,e){document.querySelectorAll('.eopt').forEach(b=>{b.style.background='';b.style.color='';b.style.borderColor='var(--border)';});const c=eC(e);btn.style.background=c;btn.style.color='#fff';btn.style.borderColor=c;S.energy=e;}
+
+function startApp(fromSaved){
+  if(!fromSaved){S.name=$('obN').value.trim();}
+  $('ob').style.display='none';
+  $('enS').value=S.energy;
+  if(S.darkMode){document.body.classList.add('dark');}
+  const h=new Date().getHours();const n=S.name?'Hey '+S.name+'! ':'';
+  $('gMsg').textContent=n+(h<12?'Good morning! 🌅':h<17?'Good afternoon! ☀️':'Good evening! 🌙');
+  $('sMsg').textContent=MSGS[Math.floor(Math.random()*MSGS.length)];
+  /* Ensure new state keys exist */
+  if(!S.shopping)S.shopping={items:[]};
+  if(!S.moodLog)S.moodLog={today:null,log:[]};
+  if(!S.timeBlocks)S.timeBlocks={};
+  if(!S.roomStatus)S.roomStatus={};
+  renderAll();
+  if(!fromSaved)saveState();
+}
+
+/* FIX #4: checkSaved — DOM is already parsed when script runs at bottom of body,
+   so DOMContentLoaded never fires. Run synchronously instead. */
+(function checkSaved(){
+  if(_saved&&_saved._savedAt){
+    startApp(true);
+  }
+})();
+
+function setMode(m){S.mode=m;$('mtG').classList.toggle('active',m==='guide');$('mtC').classList.toggle('active',m==='custom');rDash();}
+function setEnergy(v){S.energy=v;rDash();}
+function totDone(){return Object.values(S.checked).filter(Boolean).length;}
+function totDC(){return Object.values(S.dc).filter(Boolean).length;}
+function ch30Done(){return Object.keys(S.checked).filter(k=>k.startsWith('ch30_')&&S.checked[k]).length;}
+function supDone(){return Object.keys(S.checked).filter(k=>k.startsWith('sup_')&&S.checked[k]).length;}
+function fcDone(){return Object.keys(S.checked).filter(k=>k.startsWith('fc_')&&S.checked[k]).length;}
+
+function rDash(){
+  const eb=$('eBadge');if(eb)eb.textContent=eI(S.energy)+' '+S.energy.charAt(0).toUpperCase()+S.energy.slice(1)+' Energy';
+  rTL(D.daily,'daily','todayL',true);rTL(D.morning,'morning','morningL',false);rTL(D.midday,'midday','middayL',false);rTL(D.night,'night','nightL',false);
+  updStats();
+  /* Add dash extras after render */
+  setTimeout(()=>{addDashQuote();addDashShortcuts();},50);
+}
+function rTL(tasks,pfx,cid,filt){
+  const c=$(cid);if(!c)return;
+  let fl=tasks;
+  if(filt&&S.mode==='guide'){if(S.energy==='low')fl=tasks.filter(t=>t.e==='low');else if(S.energy==='medium')fl=tasks.filter(t=>t.e!=='high');}
+  let h='';
+  fl.forEach(t=>{const k=pfx+'_'+t.id;const dn=!!S.checked[k];const ec=eC(t.e||'medium');
+    h+=`<div class="ti${dn?' done':''}" onclick="chkT('${k}',this)"><div class="tc${dn?' on':''}" style="border-color:${ec};${dn?'background:'+ec+';border-color:transparent':''}">${dn?'✓':''}</div><div style="flex:1"><div class="tt">${t.text}</div><div class="tm">${eI(t.e||'medium')} ${t.e||'medium'}${t.t?' · '+t.t+' min':''}</div></div></div>`;
+  });
+  if(S.mode==='custom')h+=`<button class="addb" onclick="showAF('${cid}','${pfx}')">➕ Add your own task</button><div id="af_${cid}"></div>`;
+  c.innerHTML=h;
+}
+function chkT(key,row){
+  S.checked[key]=!S.checked[key];row.classList.toggle('done',S.checked[key]);
+  const chk=row.querySelector('.tc');const txt=row.querySelector('.tt');const ec=chk.style.borderColor;
+  if(S.checked[key]){chk.textContent='✓';chk.classList.add('on');chk.style.background=ec;chk.style.borderColor='transparent';txt.style.textDecoration='line-through';txt.style.color='var(--muted)';setTimeout(conf,80);rwd();}
+  else{chk.textContent='';chk.classList.remove('on');chk.style.background='';chk.style.borderColor=ec;txt.style.textDecoration='';txt.style.color='';}
+  updStats();chkBdg();_autoSave();
+}
+function updStats(){
+  const dn=totDone();const lft=Math.max(0,10-dn);const pct=dn>0?Math.min(100,Math.round(dn/(dn+lft)*100)):0;
+  const sd=$('sD'),sl=$('sL'),sp=$('sP'),tt=$('ttLbl'),mp=$('mProg');
+  if(sd)sd.textContent=dn;if(sl)sl.textContent=lft;if(sp)sp.textContent=pct+'%';if(tt)tt.textContent=dn+'/'+(dn+lft);if(mp)mp.style.width=pct+'%';
+}
+function justOne(){
+  const pool=D.daily.filter(t=>!S.checked['daily_'+t.id]&&(S.energy==='high'||t.e==='low'||t.e===S.energy));
+  const pick=pool.length?pool[Math.floor(Math.random()*pool.length)]:D.daily[Math.floor(Math.random()*D.daily.length)];
+  showR('🎯',pick.text,eI(pick.e)+' '+pick.e+' · '+(pick.t||5)+' min');conf();
+}
+function conf(){
+  const cols=['#FF6B9D','#FFD93D','#6BCB77','#4D96FF','#A8A4CE','#FF6B6B','#FF9F43','#4ECDC4'];
+  for(let i=0;i<20;i++){const el=document.createElement('div');el.className='conf';el.style.cssText=`left:${15+Math.random()*70}%;top:-10px;background:${cols[Math.floor(Math.random()*cols.length)]};transform:rotate(${Math.random()*360}deg);animation-delay:${Math.random()*.5}s;animation-duration:${1.2+Math.random()*.8}s`;document.body.appendChild(el);setTimeout(()=>el.remove(),2200);}
+}
+function rwd(){const r=RWD[Math.floor(Math.random()*RWD.length)];showR(r.e,r.t,r.s);}
+function showR(e,t,s){const p=$('rPop');$('rE').textContent=e;$('rT').textContent=t;$('rS').textContent=s;p.style.display='flex';clearTimeout(p._t);p._t=setTimeout(()=>p.style.display='none',3000);}
+function setTmr(m,btn){S.timerMins=m;S.timerSecs=m*60;rstTmr();document.querySelectorAll('.tpb').forEach(b=>b.classList.remove('sel'));if(btn)btn.classList.add('sel');}
+function rstTmr(){if(S.timerIv)clearInterval(S.timerIv);S.timerRunning=false;S.timerSecs=S.timerMins*60;const d=$('tDisp');if(d)d.textContent=fmt(S.timerMins,0);const b=$('tBtn');if(b)b.textContent='▶ Start';}
+function togTmr(){
+  if(S.timerRunning){clearInterval(S.timerIv);S.timerRunning=false;const b=$('tBtn');if(b)b.textContent='▶ Resume';}
+  else{S.timerRunning=true;const b=$('tBtn');if(b)b.textContent='⏸ Pause';let rem=S.timerSecs;
+    S.timerIv=setInterval(()=>{rem--;S.timerSecs=rem;const d=$('tDisp');if(d)d.textContent=fmt(Math.floor(rem/60),rem%60);
+      if(rem<=0){clearInterval(S.timerIv);S.timerRunning=false;const d=$('tDisp');if(d)d.textContent='Done! 🎉';const b=$('tBtn');if(b)b.textContent='▶ Start';conf();rwd();}},1000);}
+}
+function rZones(){
+  const g=$('zonesG');if(!g)return;let h='';
+  D.zones.forEach(z=>{const dn=z.tasks.filter((_,i)=>S.checked['z_'+z.id+'_'+i]).length;const pct=Math.round(dn/z.tasks.length*100);
+    h+=`<div class="zc${S.activeZone===z.id?' on':''}" onclick="zDet('${z.id}')" style="${S.activeZone===z.id?'border-color:'+z.col:''}"><div class="zi">${z.icon}</div><div class="zn">${z.nm}</div><div class="zpr"><div class="zb" style="width:${pct}%;background:${z.col}"></div></div><div style="font-size:10px;font-weight:700;color:var(--muted);margin-top:4px">${dn}/${z.tasks.length} done</div></div>`;
+  });
+  if(S.mode==='custom')h+=`<div class="zc" onclick="addZone()" style="border-style:dashed"><div class="zi">➕</div><div class="zn" style="color:var(--muted)">New Zone</div></div>`;
+  g.innerHTML=h;
+}
+function zDet(zid){
+  S.activeZone=zid;const z=D.zones.find(x=>x.id===zid);rZones();const d=$('zoneD');if(!d)return;
+  const extra=S.customZoneTasks[zid]||[];const all=[...z.tasks,...extra];
+  let h=`<div class="cs" style="border-top:4px solid ${z.col}"><div class="ch">${z.icon} ${z.nm}</div><div class="ft" style="border-color:${z.col}"><strong style="color:${z.col}">💡 Tip</strong><br><span style="font-size:12px;color:var(--muted)">15 minutes a day here is enough! Consistency beats intensity every time.</span></div>`;
+  all.forEach((t,i)=>{const k='z_'+z.id+'_'+i;const dn=!!S.checked[k];
+    h+=`<div class="cr"><div class="mc${dn?' on':''}" onclick="chkM('${k}',this,'${z.col}')" style="border-color:${z.col};${dn?'background:'+z.col:''}">${dn?'✓':''}</div><span class="cl" style="${dn?'text-decoration:line-through;color:var(--muted)':''}">${t}</span></div>`;
+  });
+  if(S.mode==='custom')h+=`<button class="addb" onclick="addZT('${z.id}')">➕ Add task to this zone</button>`;
+  h+='</div>';d.innerHTML=h;
+}
+/* FIX #9: chkM now calls updStats() so dashboard totals update from zone/supply/family actions */
+function chkM(key,el,col){
+  if(!el)return;const c=col||'#888';S.checked[key]=!S.checked[key];el.classList.toggle('on',S.checked[key]);const lbl=el.nextElementSibling;
+  if(S.checked[key]){el.textContent='✓';el.style.background=c;el.style.borderColor='transparent';if(lbl){lbl.style.textDecoration='line-through';lbl.style.color='var(--muted)';}conf();rwd();}
+  else{el.textContent='';el.style.background='';el.style.borderColor=c;if(lbl){lbl.style.textDecoration='';lbl.style.color='';}}
+  rZones();updStats();chkBdg();_autoSave();
+}
+/* FIX #9: chkMDC also calls updStats() */
+function chkMDC(key,el,col){
+  if(!el)return;const c=col||'#888';S.dc[key]=!S.dc[key];el.classList.toggle('on',S.dc[key]);const lbl=el.nextElementSibling;
+  if(S.dc[key]){el.textContent='✓';el.style.background=c;el.style.borderColor='transparent';if(lbl){lbl.style.textDecoration='line-through';lbl.style.color='var(--muted)';}conf();rwd();}
+  else{el.textContent='';el.style.background='';el.style.borderColor=c;if(lbl){lbl.style.textDecoration='';lbl.style.color='';}}
+  updStats();chkBdg();_autoSave();
+}
+function CR(key,col,txt,done){return `<div class="cr"><div class="mc${done?' on':''}" onclick="chkM('${key}',this,'${col}')" style="border-color:${col};${done?'background:'+col:''}">${done?'✓':''}</div><span class="cl" style="${done?'text-decoration:line-through;color:var(--muted)':''}">${txt}</span></div>`;}
+function rWeekly(){
+  const c=$('weeklyC');if(!c)return;let h=`<div class="cs"><div class="ch">📋 Daily Tasks (Every Day)</div>`;
+  D.daily.slice(0,6).forEach((t,i)=>{const k='wd_'+i;const dn=!!S.checked[k];h+=CR(k,'#888',t.text,dn);});h+='</div>';
+  D.weekly.forEach(day=>{h+=`<div class="cs" style="border-top:4px solid ${day.col}"><div class="ch" style="color:${day.col}">${day.day} <span style="font-size:12px;font-weight:600;color:var(--muted)">${day.zone}</span></div>`;
+    day.tasks.forEach((t,i)=>{const k='wk_'+day.day+'_'+i;const dn=!!S.checked[k];h+=CR(k,day.col,t,dn);});h+='</div>';});
+  c.innerHTML=h;
+}
+function rSched(){
+  const c=$('schedC');if(!c)return;
+  const mCols=['#fca5a5','#4ade80','#60a5fa','#c084fc','#f97316','#ef4444','#60a5fa','#f472b6','#94a3b8','#a3a3a3','#22d3ee','#a78bfa'];
+  const mL=['J','F','M','A','M','J','J','A','S','O','N','D'];
+  const mT=['Deep clean appliances','Wash windows inside','Declutter one full room','Clean behind large furniture','Wash curtains or blinds','Deep clean bathroom grout','Organize entire pantry','Clean oven thoroughly','Vacuum mattress + freshen','Wipe all baseboards','Clean inside fridge','Organize one storage area'];
+  let h=`<div class="cs"><div class="ch">📆 Monthly Checklist</div>`;
+  mT.forEach((t,ti)=>{const k='mo_'+ti;const dn=!!S.checked[k];
+    h+=`<div class="cr" style="flex-wrap:wrap;gap:5px;padding:9px 0"><div class="mc${dn?' on':''}" onclick="chkM('${k}',this,'#888')" style="border-color:#888;${dn?'background:#888':''}">${dn?'✓':''}</div><span class="cl" style="min-width:150px;${dn?'text-decoration:line-through;color:var(--muted)':''}">${t}</span><div style="display:flex;gap:3px;flex-wrap:wrap">${mL.map((lbl,mi)=>{const mk='mo_'+ti+'_'+mi;const md=!!S.checked[mk];return`<div onclick="chkM('${mk}',this,'${mCols[mi]}')" class="mc${md?' on':''}" style="width:22px;height:22px;border-color:${mCols[mi]};${md?'background:'+mCols[mi]+';border-color:transparent':''};font-size:10px">${md?'✓':lbl}</div>`;}).join('')}</div></div>`;
+  });h+='</div>';
+  const qC=['#fca5a5','#4ade80','#60a5fa','#fbbf24'];const qL=['Jan–Mar','Apr–Jun','Jul–Sep','Oct–Dec'];
+  const qT=['Deep clean all appliances','Service HVAC filters','Wash all window treatments','Check smoke/CO detectors','Declutter entire home','Deep clean garage','Seal grout in bathrooms','Pest prevention check','Clean behind major appliances','Organize all storage areas'];
+  h+=`<div class="cs"><div class="ch">🗓️ Quarterly Schedule</div>`;
+  qT.forEach((t,ti)=>{h+=`<div class="cr" style="flex-wrap:wrap;gap:5px;padding:8px 0"><span class="cl" style="flex:1;min-width:140px">${t}</span>${qL.map((lbl,qi)=>{const qk='qt_'+ti+'_'+qi;const qd=!!S.checked[qk];return`<div onclick="chkM('${qk}',this,'${qC[qi]}')" style="padding:3px 9px;border-radius:7px;cursor:pointer;font-size:11px;font-weight:800;background:${qd?qC[qi]:'#f0f0f0'};color:${qd?'#fff':'#888'};user-select:none">${qd?'✓ ':''}${lbl}</div>`;}).join('')}</div>`;});h+='</div>';
+  const sAT=['Deep clean exterior windows','Service HVAC system','Deep clean carpets & rugs','Organize attic or basement','Pest control treatment','Check all appliance hoses','Wash all pillows & duvets','Organize all storage areas'];
+  h+=`<div class="cs"><div class="ch">📅 Semi-Annual</div>`;
+  sAT.forEach((t,i)=>{const k1='sa1_'+i;const k2='sa2_'+i;const d1=!!S.checked[k1];const d2=!!S.checked[k2];
+    h+=`<div class="cr" style="flex-wrap:wrap;gap:5px"><span class="cl" style="flex:1">${t}</span><div onclick="chkM('${k1}',this,'#60a5fa')" style="padding:3px 9px;border-radius:7px;cursor:pointer;font-size:11px;font-weight:800;background:${d1?'#60a5fa':'#f0f0f0'};color:${d1?'#fff':'#888'};user-select:none">${d1?'✓ ':''}Jan/Jun</div><div onclick="chkM('${k2}',this,'#a78bfa')" style="padding:3px 9px;border-radius:7px;cursor:pointer;font-size:11px;font-weight:800;background:${d2?'#a78bfa':'#f0f0f0'};color:${d2?'#fff':'#888'};user-select:none">${d2?'✓ ':''}Jul/Dec</div></div>`;});h+='</div>';
+  h+=`<div class="cs"><div class="ch">🌟 FlyLady Monthly Zones</div>`;
+  D.flyLady.forEach(z=>{h+=`<div class="ft" style="border-color:${z.col}"><strong style="color:${z.col}">${z.wk}</strong><br><span style="font-size:13px">${z.area}</span><br><span style="font-size:11px;color:var(--muted)">15 min/day · Focus on one small area at a time</span></div>`;});h+='</div>';
+  const speeds=[{t:'5 Min',col:'#fca5a5',tasks:['Put away shoes','Wipe table','Take out trash','Quick sink wipe','Fold sofa blanket']},{t:'10-15 Min',col:'#f472b6',tasks:['Vacuum one room','Clean toilet','Wipe counters','Sweep kitchen','Quick bathroom']},{t:'20 Min',col:'#fbbf24',tasks:['Mop kitchen floor','Clean bathroom','Vacuum all rooms','Wipe surfaces']},{t:'30 Min',col:'#22d3ee',tasks:['Deep kitchen clean','Full bathroom','Vacuum & mop','Start laundry']},{t:'45 Min',col:'#4ade80',tasks:['Full kitchen + bath','Vacuum all','Tidy all rooms','Wipe glass']},{t:'60 Min',col:'#a78bfa',tasks:['Full room deep','All laundry','Fridge clean','Mop all floors']},{t:'90 Min',col:'#fb923c',tasks:['Full home reset','Deep kitchen','Bathrooms done','Bedrooms tidy','All laundry']}];
+  h+=`<div class="cs"><div class="ch">⚡ Speed Cleaning By Time</div><div class="spg">`;
+  speeds.forEach((s,si)=>{h+=`<div class="sps"><div class="sph" style="background:${s.col}">${s.t}</div>`;s.tasks.forEach((t,ti)=>{const k='sp_'+si+'_'+ti;const dn=!!S.checked[k];h+=CR(k,s.col,t,dn);});h+='</div>';});h+='</div></div>';
+  c.innerHTML=h;
+}
+function rDeep(){
+  const c=$('deepC');if(!c)return;let h='';
+  D.deepClean.forEach((room,ri)=>{
+    const dn=room.tasks.filter((_,ti)=>S.dc['dc_'+ri+'_'+ti]).length;const pct=Math.round(dn/room.tasks.length*100);
+    h+=`<div class="cs" style="border-top:4px solid ${room.col}"><div class="ch">${room.icon} ${room.nm}<span style="margin-left:auto;font-size:12px;font-weight:700;color:${room.col}">${dn}/${room.tasks.length}</span></div><div class="pw"><div class="pf" style="width:${pct}%;background:${room.col}"></div></div>`;
+    room.tasks.forEach((t,ti)=>{const k='dc_'+ri+'_'+ti;const dn2=!!S.dc[k];
+      h+=`<div class="cr"><div class="mc${dn2?' on':''}" onclick="chkMDC('${k}',this,'${room.col}')" style="border-color:${room.col};${dn2?'background:'+room.col:''}">${dn2?'✓':''}</div><span class="cl" style="${dn2?'text-decoration:line-through;color:var(--muted)':''}">${t}</span></div>`;});
+    h+='</div>';});c.innerHTML=h;
+}
+function rLaundry(){
+  const c=$('laundryC');if(!c)return;let h='<div class="st">📅 Weekly Laundry Schedule</div>';
+  D.laundryDays.forEach(d=>{h+=`<div class="ld"><div class="lt" style="background:${d.col}">${d.day}</div><div><div style="font-size:13px;font-weight:800;margin-bottom:2px">${d.type}</div><div style="font-size:12px;color:var(--muted)">${d.note}</div></div></div>`;});
+  h+=`<div class="cs" style="margin-top:12px"><div class="ch">💡 Laundry Tips</div>`;
+  D.laundryTips.forEach(t=>{h+=`<div style="padding:7px 0;font-size:13px;border-bottom:1px solid #f5f5f5;display:flex;gap:8px"><div style="width:7px;height:7px;border-radius:50%;background:var(--teal);margin-top:5px;flex-shrink:0"></div><div>${t}</div></div>`;});h+='</div>';
+  const lDP=['Wash machine drum (hot + baking soda)','Wipe machine exterior front & back','Clear & clean lint trap','Clean dryer vent tube','Wipe behind machines','Organize all laundry products','Sweep & mop floor','Check hoses for cracks','Discard expired stain removers','Restock all laundry supplies'];
+  h+=`<div class="cs"><div class="ch">🧺 Laundry Deep Clean</div>`;
+  lDP.forEach((t,i)=>{const k='ldp_'+i;const dn=!!S.checked[k];h+=CR(k,D.laundryDays[4].col,t,dn);});h+='</div>';
+  const lR=[{nm:'Kitchen',col:'#fca5a5',items:['Dish cloths','Kitchen towels','Oven mitts','Tablecloth','Aprons']},{nm:'Garage',col:'#4ade80',items:['Work rags','Old towels','Floor mats','Car cloths']},{nm:'Play Room',col:'#60a5fa',items:['Stuffed animals','Play mats','Dress-up items']},{nm:'Living Room',col:'#fbbf24',items:['Throw blankets','Couch covers','Pillow cases']},{nm:'Clothing',col:'#f472b6',items:['Everyday clothes','Work clothes','Gym wear','Sleepwear','Underwear & socks']},{nm:'Other',col:'#a78bfa',items:['Curtains','Washable blinds','Pet bedding','Reusable bags']}];
+  h+=`<div class="cs"><div class="ch">🗂️ Laundry By Room</div><div class="spg">`;
+  lR.forEach((r,ri)=>{h+=`<div class="sps"><div class="sph" style="background:${r.col}">${r.nm}</div>`;r.items.forEach((t,ti)=>{const k='lr_'+ri+'_'+ti;const dn=!!S.checked[k];h+=CR(k,r.col,t,dn);});h+='</div>';});h+='</div></div>';
+  c.innerHTML=h;
+}
+function rSupplies(){
+  const c=$('suppliesC');if(!c)return;
+  const cols={'Kitchen':'#fca5a5','Bathrooms':'#4ade80','Laundry':'#60a5fa','Outdoor':'#fbbf24','Garage':'#94a3b8','Office':'#a78bfa'};
+  let h='<div class="supg">';
+  Object.entries(D.supplies).forEach(([room,items])=>{const col=cols[room]||'#ccc';
+    h+=`<div class="sus" style="border-color:${col}"><div style="font-size:13px;font-weight:900;margin-bottom:10px">${room}</div>`;
+    items.forEach((t,i)=>{const k='sup_'+room.replace(/\s/g,'_')+'_'+i;const dn=!!S.checked[k];
+      h+=`<div class="cr"><div class="mc${dn?' on':''}" onclick="chkM('${k}',this,'${col}')" style="border-color:${col};${dn?'background:'+col:''}">${dn?'✓':''}</div><span class="cl">${t} <span style="font-size:10px;font-weight:800;color:${dn?'var(--green)':'var(--muted)'}">${dn?'✅ Got it':'⬜ Need it'}</span></span></div>`;});
+    h+='</div>';});h+='</div>';c.innerHTML=h;
+}
+function rHacks(){
+  const c=$('hacksC');if(!c)return;let h='';
+  D.hacks.forEach(hk=>{h+=`<div class="hc"><div class="ht">${hk.title}</div><div class="hd">${hk.desc}</div></div>`;});c.innerHTML=h;
+}
+function rFamily(){
+  const c=$('familyC');if(!c)return;
+  const days=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const dC=['#e0e0e0','#6BCB77','#FF9F43','#A8A4CE','#4D96FF','#6BCB77','#FF6B9D'];
+  let h=`<div class="cs"><div class="ch">👥 Family Members</div><div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px">${S.familyMembers.map((m,i)=>`<input value="${m}" onchange="S.familyMembers[${i}]=this.value" style="padding:6px 12px;border:1.5px solid var(--border);border-radius:10px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;width:120px;outline:none">`).join('')}<button class="addb" style="width:auto;padding:6px 12px;margin:0" onclick="S.familyMembers.push('Person '+(S.familyMembers.length+1));rFamily()">➕</button></div>`;
+  h+=`<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:12px"><tr><th style="padding:8px 4px;text-align:left;min-width:80px">Person</th>${days.map((d,i)=>`<th style="color:${dC[i]};min-width:90px;padding:6px 3px">${d}</th>`).join('')}</tr>`;
+  S.familyMembers.forEach((m,mi)=>{
+    h+=`<tr><td style="font-weight:800;font-size:12px;padding:6px 4px;white-space:nowrap">${m}</td>${days.map((d,di)=>{const k='fc_'+mi+'_'+di;const kt='fct_'+mi+'_'+di;const val=S.checked[kt]||'';const dn=!!S.checked[k];return`<td style="padding:4px 3px;vertical-align:top"><input value="${val}" placeholder="task..." onchange="S.checked['fct_${mi}_${di}']=this.value" style="width:100%;padding:3px 6px;border:1px solid #eee;border-radius:6px;font-family:'Nunito',sans-serif;font-size:11px;outline:none"><div onclick="chkM('${k}',this,'${dC[di]}')" class="mc${dn?' on':''}" style="border-color:${dC[di]};${dn?'background:'+dC[di]:'background:#f8f8ff'};margin-top:4px;width:100%;border-radius:6px;height:20px;font-size:10px;font-weight:800">${dn?'✓ Done':'tap done'}</div></td>`;}).join('')}</tr>`;});
+  h+=`</table></div></div>`;c.innerHTML=h;
+}
+function rYearly(){
+  const c=$('yearlyC');if(!c)return;
+  let h=`<div class="cs"><div class="ch">📆 Yearly Cleaning — type your big tasks per month</div><div class="yr-grid">`;
+  D.months.forEach((mo,mi)=>{const col=D.mCols[mi];
+    h+=`<div class="yrm" style="border-color:${col}"><div style="font-size:13px;font-weight:900;color:${col};margin-bottom:8px">${mo}</div>`;
+    for(let i=0;i<6;i++){const k='yr_'+mi+'_'+i;const val=S.yearlyTasks[k]||'';const dn=!!S.checked['yrc_'+mi+'_'+i];
+      h+=`<div style="display:flex;align-items:center;gap:4px;margin-bottom:5px"><div class="mc${dn?' on':''}" onclick="chkM('yrc_${mi}_${i}',this,'${col}')" style="border-color:${col};${dn?'background:'+col:''}">${dn?'✓':''}</div><input value="${val}" placeholder="task..." onchange="S.yearlyTasks['${k}']=this.value" style="flex:1;padding:3px 7px;border:1px solid #eee;border-radius:7px;font-family:'Nunito',sans-serif;font-size:11px;outline:none"></div>`;}
+    h+='</div>';});
+  h+='</div></div>';c.innerHTML=h;
+}
+function rChallenges(){
+  const c=$('challengesC');if(!c)return;
+  let h=`<div class="cs"><div class="ch">📅 30-Day Declutter Challenge</div><div class="ft"><strong style="color:var(--teal)">How It Works</strong><br><span style="font-size:12px;color:var(--muted)">Each day, declutter something small — one drawer, shelf, or bag. Check off the day. No pressure, no shame!</span></div><div class="d30g">`;
+  for(let d=1;d<=30;d++){const k='ch30_'+d;const dn=!!S.checked[k];h+=`<div class="d30c${dn?' on':''}" onclick="ch30('${k}',this)">Day ${d}<div style="font-size:16px;min-height:20px">${dn?'✓':''}</div></div>`;}
+  h+='</div></div>';
+  const sC={spring:'#fca5a5',summer:'#4ade80',autumn:'#f97316',winter:'#a78bfa'};
+  const sI={spring:'🌸',summer:'☀️',autumn:'🍂',winter:'❄️'};
+  h+=`<div class="st">🌸 Seasonal Cleaning Checklists</div><div class="seag">`;
+  Object.keys(D.seasonal).forEach(s=>{h+=`<div class="cs" style="border-top:4px solid ${sC[s]}"><div class="ch" style="color:${sC[s]}">${sI[s]} ${s.charAt(0).toUpperCase()+s.slice(1)}</div>`;
+    D.seasonal[s].forEach((t,i)=>{const k='sea_'+s+'_'+i;const dn=!!S.checked[k];h+=CR(k,sC[s],t,dn);});h+='</div>';});h+='</div>';c.innerHTML=h;
+}
+function ch30(k,el){
+  S.checked[k]=!S.checked[k];el.classList.toggle('on',S.checked[k]);el.children[1].textContent=S.checked[k]?'✓':'';if(S.checked[k]){conf();rwd();}chkBdg();_autoSave();
+}
+function rBadges(){
+  const c=$('badgesC');if(!c)return;
+  const dn=totDone();const dcD=totDC();const ch=ch30Done();const morD=D.morning.filter(t=>S.checked['morning_'+t.id]).length;const spD=Object.keys(S.checked).filter(k=>k.startsWith('sp_')&&S.checked[k]).length;const supD=supDone();const fcD=fcDone();
+  let ul=0;
+  D.badges.forEach(b=>{
+    let un=false;
+    if(b.type==='done')un=dn>=b.req;else if(b.type==='dc')un=dcD>=b.req;else if(b.type==='streak')un=S.streak>=b.req;
+    else if(b.type==='zone')un=D.zones.some(z=>z.tasks.every((_,i)=>S.checked['z_'+z.id+'_'+i]));
+    else if(b.type==='ch30')un=ch>=b.req;else if(b.type==='morning')un=morD>=b.req;
+    else if(b.type==='speed')un=spD>=b.req;else if(b.type==='supply')un=supD>=b.req;else if(b.type==='family')un=fcD>=b.req;
+    if(un)ul++;
+  });
+  let h=`<div class="cs" style="background:linear-gradient(135deg,#fffbe6,#fff9d0);border:2px solid var(--yellow);margin-bottom:12px"><div class="ch">🏅 ${ul}/${D.badges.length} Badges Unlocked</div><div class="pw"><div class="pf" style="width:${Math.round(ul/D.badges.length*100)}%;background:var(--yellow)"></div></div><div style="font-size:13px;color:var(--muted)">Complete tasks across all sections to unlock more!</div></div><div class="bdg">`;
+  D.badges.forEach(b=>{
+    let un=false;
+    if(b.type==='done')un=totDone()>=b.req;else if(b.type==='dc')un=totDC()>=b.req;else if(b.type==='streak')un=S.streak>=b.req;
+    else if(b.type==='zone')un=D.zones.some(z=>z.tasks.every((_,i)=>S.checked['z_'+z.id+'_'+i]));
+    else if(b.type==='ch30')un=ch30Done()>=b.req;else if(b.type==='morning')un=D.morning.filter(t=>S.checked['morning_'+t.id]).length>=b.req;
+    else if(b.type==='speed')un=Object.keys(S.checked).filter(k=>k.startsWith('sp_')&&S.checked[k]).length>=b.req;
+    else if(b.type==='supply')un=supDone()>=b.req;else if(b.type==='family')un=fcDone()>=b.req;
+    h+=`<div class="bdc${un?' unlocked':''}"><div style="font-size:36px;margin-bottom:6px">${un?b.emoji:'🔒'}</div><div style="font-size:12px;font-weight:800">${b.name}</div><div style="font-size:11px;color:var(--muted);margin-top:3px">${b.desc}</div><div style="font-size:11px;font-weight:800;margin-top:4px;color:${un?'var(--green)':'var(--muted)'}">${un?'✓ Unlocked!':'Keep going!'}</div></div>`;
+  });h+='</div>';c.innerHTML=h;
+}
+/* FIX #8: chkBdg always re-renders badges so they stay in sync */
+function chkBdg(){rBadges();}
+
+/* FIX #5: Single unified gS — no stacking patches */
+function gS(id,navBtn,bnavBtn){
+  document.querySelectorAll('[id^="sec-"]').forEach(s=>s.style.display='none');
+  const s=$('sec-'+id);if(s)s.style.display='';
+  document.querySelectorAll('.nb').forEach(b=>b.classList.remove('active'));if(navBtn)navBtn.classList.add('active');
+  document.querySelectorAll('.bn').forEach(b=>b.classList.remove('active'));if(bnavBtn)bnavBtn.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  /* Render lazy sections on demand */
+  if(id==='notes')rNotes();
+  else if(id==='hotspots')rHotspots();
+  else if(id==='quotes')rQuotes();
+  else if(id==='settings')rSettings();
+  else if(id==='shopping')rShopping();
+  else if(id==='mood')rMood();
+  else if(id==='timeblocks')rTimeBlocks();
+  else if(id==='roomstatus')rRoomStatus();
+}
+
+function showAF(cid,pfx){
+  const fd=$('af_'+cid);if(!fd)return;
+  fd.innerHTML=`<div class="af"><input id="nt_${cid}" placeholder="Task name..."><select id="ne_${cid}"><option value="low">😴 Low</option><option value="medium" selected>😊 Medium</option><option value="high">🚀 High</option></select><div class="afb"><button class="btn bp" onclick="saveT('${cid}','${pfx}')">Add ✓</button><button class="btn bg" onclick="$('af_${cid}').innerHTML=''">Cancel</button></div></div>`;
+}
+function saveT(cid,pfx){
+  const inp=$('nt_'+cid);const en=$('ne_'+cid);if(!inp||!inp.value.trim())return;
+  D.daily.push({id:'ct_'+Date.now(),text:inp.value.trim(),e:en.value,z:'custom',t:10});rDash();
+}
+/* FIX #10: addZT now calls _autoSave() */
+function addZT(zid){const t=prompt('New task name:');if(!t)return;if(!S.customZoneTasks[zid])S.customZoneTasks[zid]=[];S.customZoneTasks[zid].push(t);_autoSave();zDet(zid);}
+function addZone(){const nm=prompt('Zone name:');if(!nm)return;const icon=prompt('Emoji icon:')||'📦';const col=prompt('Colour hex (e.g. #FF6B9D):')||'#888';D.zones.push({id:'cz_'+Date.now(),nm,icon,col,tasks:[]});rZones();}
+const _h=new Date().getHours();$('gMsg').textContent=_h<12?'Good morning! 🌅':_h<17?'Good afternoon! ☀️':'Good evening! 🌙';
+
+/* ── MOTIVATIONAL QUOTES ── */
+const QUOTES=[
+  {q:"You don't have to do it all. Just start somewhere.",a:"FlyLady"},
+  {q:"Progress, not perfection. Every small action counts.",a:"Dopamine Cleaning"},
+  {q:"Your home doesn't have to be perfect. It just has to be yours.",a:"Unknown"},
+  {q:"Done is better than perfect.",a:"Sheryl Sandberg"},
+  {q:"A clean space is a calm mind.",a:"Dopamine Cleaning"},
+  {q:"You are not behind. You are exactly where you need to be.",a:"Unknown"},
+  {q:"Small consistent actions create big lasting change.",a:"Dopamine Cleaning"},
+  {q:"Declutter for 15 minutes a day to gradually reduce clutter.",a:"FlyLady"},
+  {q:"Start with your sink. A shiny sink changes everything.",a:"FlyLady"},
+  {q:"You are not your mess. You are the person trying to fix it.",a:"Unknown"},
+  {q:"It's not about being tidy. It's about feeling at home.",a:"Dopamine Cleaning"},
+  {q:"Baby steps. Every step forward counts.",a:"FlyLady"},
+  {q:"Reset your home. Reset your mind.",a:"FlyLady"},
+  {q:"You've got this. One room at a time.",a:"Dopamine Cleaning"},
+  {q:"The hardest part is starting. You already did that by being here.",a:"Unknown"},
+  {q:"Your future self will thank you for the 5 minutes you spent today.",a:"Dopamine Cleaning"},
+  {q:"It's okay to rest. Rest is productive too.",a:"Unknown"},
+  {q:"Celebrate every win. Even emptying the bin matters.",a:"Dopamine Cleaning"},
+  {q:"You are not lazy. You are overwhelmed. There is a difference.",a:"Unknown"},
+  {q:"One thing. Just one thing. That's enough.",a:"Dopamine Cleaning"},
+];
+
+if(!S.hotspots)S.hotspots={spots:[{id:'h1',name:'Kitchen counter (left side)',streak:0,lastCleared:null},{id:'h2',name:'Bedroom floor pile',streak:0,lastCleared:null},{id:'h3',name:'Bathroom counter',streak:0,lastCleared:null},{id:'h4',name:'Front door drop zone',streak:0,lastCleared:null},{id:'h5',name:'Couch dump zone',streak:0,lastCleared:null}]};
+if(!S.notes)S.notes={entries:[],reflection:{week:'',mood:'',wins:'',nextWeek:''}};
+
+function rNotes(){
+  const c=$('notesC');if(!c)return;
+  const today=new Date().toLocaleDateString('en-GB',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+  let h=`<div class="cs"><div class="ch">📝 Quick Note</div><div style="font-size:12px;color:var(--muted);margin-bottom:8px">${today}</div><textarea id="quickNote" placeholder="Write anything here — a thought, a reminder, a win..." style="width:100%;min-height:100px;padding:12px;border:1.5px solid var(--border);border-radius:12px;font-family:'Nunito',sans-serif;font-size:13px;resize:vertical;outline:none;line-height:1.6">${S.notes.quickNote||''}</textarea><button class="btn bp" style="margin-top:8px;width:100%" onclick="saveQuickNote()">Save Note 💾</button></div>`;
+  h+=`<div class="cs"><div class="ch">🌟 Weekly Reflection</div><div style="font-size:13px;color:var(--muted);margin-bottom:12px">Take a moment to reflect on your week. No judgement here.</div><label style="font-size:12px;font-weight:800;color:var(--muted);display:block;margin-bottom:4px">How was this week overall?</label><div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap">${['😩 Rough','😐 Okay','😊 Good','🌟 Amazing'].map(m=>{const sel=S.notes.reflection.mood===m;return`<button onclick="S.notes.reflection.mood='${m}';rNotes()" style="padding:8px 14px;border-radius:12px;border:2px solid ${sel?'var(--pink)':'var(--border)'};background:${sel?'var(--pink)':'#fff'};color:${sel?'#fff':'var(--text)'};font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;cursor:pointer">${m}</button>`;}).join('')}</div><label style="font-size:12px;font-weight:800;color:var(--muted);display:block;margin-bottom:4px">🏆 My wins this week (no matter how small!):</label><textarea id="rWins" placeholder="I made my bed 3 times! I took out the trash! I did the dishes!" style="width:100%;min-height:80px;padding:10px;border:1.5px solid var(--border);border-radius:10px;font-family:'Nunito',sans-serif;font-size:13px;resize:vertical;outline:none;margin-bottom:10px">${S.notes.reflection.wins||''}</textarea><label style="font-size:12px;font-weight:800;color:var(--muted);display:block;margin-bottom:4px">🎯 One thing I want to focus on next week:</label><textarea id="rNext" placeholder="Just one focus — maybe the kitchen, or making my bed daily..." style="width:100%;min-height:60px;padding:10px;border:1.5px solid var(--border);border-radius:10px;font-family:'Nunito',sans-serif;font-size:13px;resize:vertical;outline:none;margin-bottom:10px">${S.notes.reflection.nextWeek||''}</textarea><label style="font-size:12px;font-weight:800;color:var(--muted);display:block;margin-bottom:4px">💭 General notes:</label><textarea id="rWeek" placeholder="Anything else on your mind..." style="width:100%;min-height:80px;padding:10px;border:1.5px solid var(--border);border-radius:10px;font-family:'Nunito',sans-serif;font-size:13px;resize:vertical;outline:none;margin-bottom:10px">${S.notes.reflection.week||''}</textarea><button class="btn bp" style="width:100%" onclick="saveReflection()">Save Reflection 💾</button></div>`;
+  h+=`<div class="cs"><div class="ch">📚 Saved Notes <span style="margin-left:auto;font-size:12px;font-weight:600;color:var(--muted)">${S.notes.entries.length} saved</span></div>${S.notes.entries.length===0?'<div style="text-align:center;padding:20px;color:var(--muted);font-size:13px">No saved notes yet. Write something above! 📝</div>':''}${[...S.notes.entries].reverse().map((n,i)=>`<div style="background:#f8f7ff;border-radius:12px;padding:12px;margin-bottom:8px;border-left:3px solid var(--lavender)"><div style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:4px">${n.date}</div><div style="font-size:13px;line-height:1.6;white-space:pre-wrap">${n.text}</div><button onclick="deleteNote(${S.notes.entries.length-1-i})" style="font-size:11px;color:var(--coral);font-weight:800;border:none;background:none;cursor:pointer;margin-top:6px;padding:0">🗑 Delete</button></div>`).join('')}</div>`;
+  c.innerHTML=h;
+}
+function saveQuickNote(){const t=$('quickNote');if(!t||!t.value.trim())return;S.notes.entries.push({date:new Date().toLocaleString(),text:t.value.trim()});S.notes.quickNote='';_autoSave();rNotes();showR('📝','Note saved!','Your thought is safe here ✨');}
+function saveReflection(){const w=$('rWeek');const wn=$('rWins');const nx=$('rNext');if(w)S.notes.reflection.week=w.value;if(wn)S.notes.reflection.wins=wn.value;if(nx)S.notes.reflection.nextWeek=nx.value;_autoSave();showR('🌟','Reflection saved!','You\'re growing every week 💪');}
+function deleteNote(i){if(!confirm('Delete this note?'))return;S.notes.entries.splice(i,1);_autoSave();rNotes();}
+
+function rHotspots(){
+  const c=$('hotspotsC');if(!c)return;
+  let h=`<div class="ft"><strong style="color:var(--teal)">🔥 What are Hotspots?</strong><br><span style="font-size:12px;color:var(--muted)">Hotspots are areas where clutter tends to pile up. Spend 5 minutes a day clearing them. They're sneaky — but beatable!</span></div><div class="cs"><div class="ch">Your Hotspots</div>`;
+  S.hotspots.spots.forEach((spot,i)=>{
+    const cleared=!!S.checked['hs_'+spot.id];
+    h+=`<div style="background:${cleared?'#f0fff4':'#fff'};border-radius:14px;padding:14px;margin-bottom:10px;border:2px solid ${cleared?'var(--green)':'var(--border)'};transition:all .2s"><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><div style="font-size:22px">${cleared?'✅':'🔥'}</div><div style="flex:1"><div style="font-size:14px;font-weight:800;${cleared?'text-decoration:line-through;color:var(--muted)':''}">${spot.name}</div><div style="font-size:11px;color:var(--muted);font-weight:700">🔥 ${spot.streak} day streak</div></div><button onclick="clearHotspot(${i},this)" style="padding:8px 14px;border-radius:10px;border:none;background:${cleared?'var(--green)':'var(--pink)'};color:#fff;font-family:'Nunito',sans-serif;font-size:12px;font-weight:800;cursor:pointer">${cleared?'✓ Done!':'Clear it!'}</button></div><div class="pw" style="margin:0"><div class="pf" style="width:${Math.min(100,spot.streak*20)}%;background:${cleared?'var(--green)':'var(--orange)'}"></div></div></div>`;
+  });
+  h+=`<button class="addb" onclick="addHotspot()">➕ Add a new hotspot</button></div>`;
+  h+=`<div class="cs"><div class="ch">⚡ 5-Minute Hotspot Reset Routine</div>${['Set timer for 5 minutes','Pick ONE hotspot — just one!','Put things away where they belong','Wipe the surface if needed','Celebrate — you did it! 🎉'].map((t,i)=>`<div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #f5f5f5"><div style="width:28px;height:28px;border-radius:50%;background:var(--pink);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;flex-shrink:0">${i+1}</div><div style="font-size:13px;font-weight:600">${t}</div></div>`).join('')}</div>`;
+  c.innerHTML=h;
+}
+function clearHotspot(i,btn){const spot=S.hotspots.spots[i];const k='hs_'+spot.id;S.checked[k]=!S.checked[k];if(S.checked[k]){spot.streak++;spot.lastCleared=new Date().toLocaleDateString();conf();showR('🔥','Hotspot cleared!','Streak: '+spot.streak+' days 🔥');}else{spot.streak=Math.max(0,spot.streak-1);}_autoSave();rHotspots();chkBdg();}
+function addHotspot(){const nm=prompt('Name this hotspot area:');if(!nm)return;S.hotspots.spots.push({id:'hs_'+Date.now(),name:nm,streak:0,lastCleared:null});_autoSave();rHotspots();}
+
+function rQuotes(){
+  const c=$('quotesC');if(!c)return;
+  const todayIdx=new Date().getDate()%QUOTES.length;const q=QUOTES[todayIdx];
+  let h=`<div style="background:linear-gradient(135deg,var(--pink),var(--coral));border-radius:22px;padding:28px;color:#fff;text-align:center;margin-bottom:16px"><div style="font-size:13px;font-weight:800;opacity:.8;margin-bottom:12px;text-transform:uppercase;letter-spacing:1px">Quote of the Day</div><div style="font-family:'Pacifico',cursive;font-size:20px;line-height:1.5;margin-bottom:12px">"${q.q}"</div><div style="font-size:13px;opacity:.85">— ${q.a}</div></div>`;
+  h+=`<button onclick="randomQuote()" class="btn bp" style="width:100%;margin-bottom:16px;padding:14px;font-size:14px">🎲 Show me another quote</button><div id="randomQuoteBox" style="display:none;background:#fff;border-radius:18px;padding:20px;margin-bottom:16px;border-left:4px solid var(--lavender);text-align:center"></div>`;
+  h+=`<div class="cs"><div class="ch">💬 All Motivational Quotes</div>${QUOTES.map(qt=>`<div style="padding:14px 0;border-bottom:1px solid #f5f5f5"><div style="font-size:13px;font-weight:700;line-height:1.6;color:var(--text)">"${qt.q}"</div><div style="font-size:11px;color:var(--muted);margin-top:4px;font-weight:700">— ${qt.a}</div></div>`).join('')}</div>`;
+  h+=`<div class="cs"><div class="ch">🌟 ADHD Affirmations</div>${['I am not lazy. I am working with a different brain.','My home does not define my worth.','Progress is not linear and that is okay.','I can do hard things — one small step at a time.','Rest is not failure. Rest is fuel.','I am allowed to ask for help.','Every tiny win is still a win.','I am learning and growing every single day.','My best looks different every day and that\'s perfectly fine.','I deserve a clean, calm space — and I\'m creating it.'].map(a=>`<div style="padding:10px 0;border-bottom:1px solid #f5f5f5;display:flex;gap:10px;align-items:flex-start"><span style="font-size:16px;flex-shrink:0">💜</span><span style="font-size:13px;font-weight:600;line-height:1.5">${a}</span></div>`).join('')}</div>`;
+  c.innerHTML=h;
+}
+function randomQuote(){const q=QUOTES[Math.floor(Math.random()*QUOTES.length)];const b=$('randomQuoteBox');if(!b)return;b.style.display='block';b.innerHTML=`<div style="font-size:16px;font-weight:700;line-height:1.6;color:var(--text)">"${q.q}"</div><div style="font-size:12px;color:var(--muted);margin-top:8px;font-weight:700">— ${q.a}</div>`;conf();}
+
+/* FIX #2: rSettings uses 'let h' (was implicit global) */
+function rSettings(){
+  const c=$('settingsC');if(!c)return;
+  const dm=document.body.classList.contains('dark');
+  const cloudAvail=_fbCloudOK;
+  let h=`<div class="cs"><div class="ch">👤 Your Profile</div><label style="font-size:12px;font-weight:800;color:var(--muted);display:block;margin-bottom:6px">Your name</label><input id="setName" value="${S.name}" placeholder="e.g. Sarah" style="width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-family:'Nunito',sans-serif;font-size:14px;outline:none;margin-bottom:10px"><label style="font-size:12px;font-weight:800;color:var(--muted);display:block;margin-bottom:6px">Default energy level</label><select id="setEnergy" style="width:100%;padding:10px;border:1.5px solid var(--border);border-radius:10px;font-family:'Nunito',sans-serif;font-size:14px;outline:none;margin-bottom:10px"><option value="low" ${S.energy==='low'?'selected':''}>😴 Low energy</option><option value="medium" ${S.energy==='medium'?'selected':''}>😊 Medium energy</option><option value="high" ${S.energy==='high'?'selected':''}>🚀 High energy</option></select><button class="btn bp" style="width:100%" onclick="saveSettings()">Save Profile 💾</button></div>`;
+  h+=`<div class="cs"><div class="ch">🎨 Appearance</div><div style="display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid #f5f5f5"><div><div style="font-size:14px;font-weight:800">🌙 Dark Mode</div><div style="font-size:12px;color:var(--muted)">Easier on the eyes at night</div></div><div onclick="toggleDark(this)" style="width:48px;height:26px;border-radius:13px;background:${dm?'var(--lavender)':'#ddd'};cursor:pointer;position:relative;transition:background .3s"><div style="width:22px;height:22px;border-radius:50%;background:#fff;position:absolute;top:2px;${dm?'right:2px':'left:2px'};transition:all .3s;box-shadow:0 1px 4px rgba(0,0,0,.2)"></div></div></div></div>`;
+  h+=`<div class="cs pdf-dl-card" style="background:linear-gradient(135deg,#fff5fb 0%,#fff9f0 50%,#f0f8ff 100%);border:2px solid rgba(255,107,157,.18);border-radius:20px;padding:20px">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
+      <span style="font-size:28px">📄</span>
+      <div>
+        <div style="font-size:15px;font-weight:900;color:var(--text)">Free ADHD Cleaning Planner PDF</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px">Print it, fill it, stick it on the fridge ✨</div>
+      </div>
+    </div>
+    <div style="height:1px;background:linear-gradient(90deg,rgba(255,107,157,.2),transparent);margin:14px 0"></div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <a href="./adhd-cleaning-planner-prefilled.pdf" download="adhd-cleaning-planner-prefilled.pdf" class="pdf-dl-btn" style="display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#FF6B9D,#FF9F43);color:#fff;border-radius:14px;padding:14px 16px;text-decoration:none;font-family:'Nunito',sans-serif;font-weight:900;font-size:14px;transition:all .2s;box-shadow:0 4px 16px rgba(255,107,157,.3)">
+        <span style="font-size:26px;flex-shrink:0">🌟</span>
+        <div style="text-align:left">
+          <div>Pre-Filled Version</div>
+          <div style="font-size:11px;font-weight:700;opacity:.85;margin-top:1px">Ready to use — tasks already filled in for you</div>
+        </div>
+        <span style="margin-left:auto;font-size:18px">⬇️</span>
+      </a>
+      <a href="./adhd-cleaning-planner-blank.pdf" download="adhd-cleaning-planner-blank.pdf" class="pdf-dl-btn" style="display:flex;align-items:center;gap:12px;background:#fff;color:var(--text);border:2.5px solid rgba(168,164,206,.4);border-radius:14px;padding:14px 16px;text-decoration:none;font-family:'Nunito',sans-serif;font-weight:900;font-size:14px;transition:all .2s">
+        <span style="font-size:26px;flex-shrink:0">📝</span>
+        <div style="text-align:left">
+          <div>Blank Version</div>
+          <div style="font-size:11px;font-weight:700;color:var(--muted);margin-top:1px">Write your own tasks — fully customisable</div>
+        </div>
+        <span style="margin-left:auto;font-size:18px">⬇️</span>
+      </a>
+    </div>
+    <div style="margin-top:12px;font-size:11px;color:var(--muted);text-align:center;line-height:1.6">35 pages · Yearly, Monthly, Weekly, Daily, Zone &amp; Deep Clean sheets<br>Works great printed on A4 or US Letter 🖨️</div>
+  </div>`;
+  h+=`<div class="cs" style="border-left:4px solid #4D96FF"><div class="ch">☁️ Your Data is Safe</div>
+    <div style="background:linear-gradient(135deg,#e8f4ff,#f0eeff);border-radius:14px;padding:16px;margin-bottom:12px;display:flex;align-items:center;gap:14px">
+      <div style="font-size:36px">${cloudAvail?'☁️':'💾'}</div>
+      <div>
+        <div style="font-size:14px;font-weight:900;color:${cloudAvail?'#4D96FF':'var(--orange)'};">${cloudAvail?'Cloud sync is ON ✅':'Saving locally on this device'}</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:3px;line-height:1.5">${cloudAvail?'Your progress saves automatically. Close the app, switch phones, come back anytime — its all still here.':'Your progress saves on this device automatically.'}</div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <button onclick="resetWeek()" class="btn" style="background:#fff5f8;color:var(--pink);border:2px solid var(--pink);width:100%;padding:12px;text-align:left">🔄 Reset Weekly Tasks &nbsp;<span style="font-size:11px;font-weight:600;opacity:.7">start fresh each week</span></button>
+      <button onclick="resetAll()" class="btn" style="background:#fff;color:var(--coral);border:2px solid var(--coral);width:100%;padding:12px;text-align:left">⚠️ Reset ALL Data &nbsp;<span style="font-size:11px;font-weight:600;opacity:.7">cannot be undone</span></button>
+    </div>
+  </div>`;
+  h+=`<div class="cs"><div class="ch">📊 Your Stats</div><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">${[['✅',totDone(),'Tasks Done'],['🧹',totDC(),'Deep Cleaned'],['🔥',S.streak,'Day Streak'],['📅',ch30Done(),'Challenge Days'],['🗂️',D.zones.filter(z=>z.tasks.every((_,i)=>S.checked['z_'+z.id+'_'+i])).length,'Zones Done'],['🏅',D.badges.filter(b=>b.type==='done'?totDone()>=b.req:false).length,'Badges']].map(([ic,val,lbl])=>`<div style="background:#f8f7ff;border-radius:12px;padding:12px;text-align:center"><div style="font-size:22px">${ic}</div><div style="font-size:20px;font-weight:900;color:var(--pink)">${val}</div><div style="font-size:10px;font-weight:800;color:var(--muted)">${lbl}</div></div>`).join('')}</div></div>`;
+  h+=`<div class="cs" style="border-left:4px solid ${cloudAvail?'#4D96FF':'var(--orange)'}"><div class="ch">${cloudAvail?'☁️':'💾'} Data Storage</div><div style="font-size:13px;line-height:1.7">${cloudAvail?'<strong style="color:#4D96FF">☁️ Cloud sync is ON</strong><br>Your progress is saved to the server. You can close the app, switch phones, or come back after months — everything will still be here.':'<strong style="color:var(--orange)">💾 Saving locally</strong><br>Your progress is saved on this device. For best results, use the app through your normal Whop link.'}</div></div>`;
+  h+=`<div class="cs" style="text-align:center"><div style="font-family:'Pacifico',cursive;font-size:22px;background:linear-gradient(135deg,var(--pink),var(--coral),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px">✨ Dopamine Cleaning</div><div style="font-size:13px;color:var(--muted);line-height:1.7">Built with 💜 for neurodivergent minds.<br>Small wins. Sparkling spaces. Zero shame.<br><br>Based on the ADHD Cleaning Planner PDF system + FlyLady method.</div><div style="margin-top:16px;font-size:12px;color:var(--muted)">Version 2.2 — Cloud Sync Edition</div></div>`;
+  c.innerHTML=h;
+}
+
+function saveSettings(){
+  const nm=$('setName');const en=$('setEnergy');
+  if(nm)S.name=nm.value.trim();
+  if(en){S.energy=en.value;$('enS').value=en.value;}
+  saveState();
+  showR('💾','Settings saved!','All good, '+(S.name||'friend')+'! ✨');
+  rDash();
+}
+
+function toggleDark(toggle){
+  document.body.classList.toggle('dark');
+  const dm=document.body.classList.contains('dark');
+  S.darkMode=dm;
+  toggle.style.background=dm?'var(--lavender)':'#ddd';
+  const thumb=toggle.children[0];
+  thumb.style.left=dm?'':'2px';
+  thumb.style.right=dm?'2px':'';
+  _autoSave();
+}
+
+function resetWeek(){
+  if(!confirm('Reset all weekly task checkboxes? Your custom tasks and deep clean data will stay.'))return;
+  Object.keys(S.checked).forEach(k=>{if(k.startsWith('wk_')||k.startsWith('wd_')||k.startsWith('daily_')||k.startsWith('morning_')||k.startsWith('midday_')||k.startsWith('night_')){delete S.checked[k];}});
+  saveState();rDash();rWeekly();updStats();
+  showR('🔄','Week reset!','Fresh start! You\'ve got this 💪');
+}
+function resetAll(){
+  if(!confirm('⚠️ This will clear ALL your data. Are you sure?'))return;
+  if(!confirm('Really sure? This cannot be undone!'))return;
+  S.checked={};S.dc={};S.hotspots={spots:[{id:'h1',name:'Kitchen counter',streak:0},{id:'h2',name:'Bedroom floor pile',streak:0},{id:'h3',name:'Bathroom counter',streak:0}]};
+  S.notes={entries:[],reflection:{week:'',mood:'',wins:'',nextWeek:''}};
+  S.yearlyTasks={};S.customZoneTasks={};
+  saveState();renderAll();
+  showR('🔄','All data cleared!','Fresh start!');
+}
+
+const darkCSS=`body.dark{background:#12121e;color:#e8e8f0}body.dark .nav,body.dark .mbar,body.dark .bnav{background:#1e1e30;border-color:rgba(255,255,255,0.08)}body.dark .nb{color:#888}body.dark .nb.active{color:var(--pink)}body.dark .cs,body.dark .sc,body.dark .zc,body.dark .hc,body.dark .sus,body.dark .sps,body.dark .bdc,body.dark .ld,body.dark .ti{background:#1e1e30;border-color:rgba(255,255,255,0.08)}body.dark .ti{background:#1e1e30}body.dark .pw{background:#2a2a40}body.dark .obc{background:#1e1e30;color:#e8e8f0}body.dark .af input,body.dark .af select{background:#2a2a40;color:#e8e8f0;border-color:rgba(255,255,255,0.1)}body.dark input,body.dark select,body.dark textarea{background:#2a2a40;color:#e8e8f0;border-color:rgba(255,255,255,0.1)}body.dark .cr{border-color:#2a2a40}body.dark .ft{background:#1a2a2e}body.dark .mt{background:#2a2a40}body.dark .esel{background:#2a2a40;color:#e8e8f0}body.dark .rpop{background:#1e1e30;color:#e8e8f0}`;
+const styleEl=document.createElement('style');styleEl.textContent=darkCSS;document.head.appendChild(styleEl);
+const printCSS=`@media print{.nav,.mbar,.bnav,.rpop,.jbtn,.tcard,.addb,.btn,.af{display:none!important}body{padding:0;background:#fff}[id^="sec-"]{display:block!important}.main{padding:8px}.cs{break-inside:avoid;border:1px solid #eee;margin-bottom:8px}.pw,.pf{display:none}}`;
+const printEl=document.createElement('style');printEl.textContent=printCSS;document.head.appendChild(printEl);
+
+/* ── DASHBOARD EXTRAS ── */
+function addDashQuote(){
+  const dl=$('nightL');if(!dl)return;
+  if(document.getElementById('dashQuoteDiv'))return;
+  const todayIdx=new Date().getDate()%QUOTES.length;const q=QUOTES[todayIdx];
+  const qDiv=document.createElement('div');
+  qDiv.id='dashQuoteDiv';
+  qDiv.style.cssText='background:linear-gradient(135deg,#f0eeff,#e8f8ff);border-radius:16px;padding:16px;margin-top:16px;border-left:4px solid var(--lavender);text-align:center';
+  qDiv.innerHTML=`<div style="font-size:11px;font-weight:800;color:var(--lavender);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Today's Reminder 💜</div><div style="font-size:15px;font-weight:700;line-height:1.6;color:var(--text)">"${q.q}"</div><div style="font-size:12px;color:var(--muted);margin-top:6px;font-weight:600">— ${q.a}</div>`;
+  dl.after(qDiv);
+}
+function addDashShortcuts(){
+  const dl=$('nightL');if(!dl)return;
+  if(document.getElementById('dashShortcuts'))return;
+  const div=document.createElement('div');div.id='dashShortcuts';div.style.cssText='margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:10px';
+  div.innerHTML=`<div onclick="gS('shopping')" style="background:linear-gradient(135deg,var(--teal),#22d3ee);border-radius:16px;padding:16px;color:#fff;cursor:pointer;transition:all .2s;text-align:center" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''"><div style="font-size:28px">🛒</div><div style="font-size:13px;font-weight:800;margin-top:6px">Shopping List</div><div style="font-size:11px;opacity:.8;margin-top:2px">${(S.shopping&&S.shopping.items||[]).filter(i=>!i.got).length} items to get</div></div><div onclick="gS('roomstatus')" style="background:linear-gradient(135deg,var(--lavender),#a78bfa);border-radius:16px;padding:16px;color:#fff;cursor:pointer;transition:all .2s;text-align:center" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''"><div style="font-size:28px">🏠</div><div style="font-size:13px;font-weight:800;margin-top:6px">Room Status</div><div style="font-size:11px;opacity:.8;margin-top:2px">How's your home?</div></div><div onclick="gS('mood')" style="background:linear-gradient(135deg,var(--pink),var(--coral));border-radius:16px;padding:16px;color:#fff;cursor:pointer;transition:all .2s;text-align:center" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''"><div style="font-size:28px">💆</div><div style="font-size:13px;font-weight:800;margin-top:6px">Mood & Music</div><div style="font-size:11px;opacity:.8;margin-top:2px">Check in + pick a vibe</div></div><div onclick="gS('timeblocks')" style="background:linear-gradient(135deg,var(--orange),#f97316);border-radius:16px;padding:16px;color:#fff;cursor:pointer;transition:all .2s;text-align:center" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''"><div style="font-size:28px">⏰</div><div style="font-size:13px;font-weight:800;margin-top:6px">Time Planner</div><div style="font-size:11px;opacity:.8;margin-top:2px">Plan your sessions</div></div>`;
+  const quoteDiv=document.getElementById('dashQuoteDiv');
+  if(quoteDiv)quoteDiv.before(div);else dl.after(div);
+}
+
+/* ── SHOPPING LIST ── */
+const SHOP_CATS=['🍋 Cleaning','🧴 Bathroom','🍽️ Kitchen','🌿 Other'];
+if(!S.shopping)S.shopping={items:[],lastCleared:null};
+
+function rShopping(){
+  const c=$('shoppingC');if(!c)return;
+  if(!S.shopping)S.shopping={items:[]};
+  const items=S.shopping.items||[];const pending=items.filter(i=>!i.got);const got=items.filter(i=>i.got);
+  let h=`<div class="cs" style="border-top:4px solid var(--teal)"><div class="ch">➕ Add Item</div><div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px"><input id="shopInput" placeholder="e.g. Dish soap, sponges..." style="flex:1;min-width:160px;padding:10px 14px;border:1.5px solid var(--border);border-radius:12px;font-family:'Nunito',sans-serif;font-size:14px;outline:none" onkeydown="if(event.key==='Enter')addShopItem()"><select id="shopCat" style="padding:10px 12px;border:1.5px solid var(--border);border-radius:12px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;outline:none">${SHOP_CATS.map(cat=>`<option>${cat}</option>`).join('')}</select><button class="btn bp" onclick="addShopItem()" style="padding:10px 18px">Add ✓</button></div><div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px">${['🧹 Mop','🧽 Sponges','🫧 Dish soap','🧴 All-purpose','🚽 Toilet cleaner','🧻 Paper towels'].map(q=>`<button onclick="quickShop('${q}')" style="padding:5px 10px;border-radius:10px;border:1.5px solid var(--border);background:#f8f7ff;font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;cursor:pointer">${q}</button>`).join('')}</div></div>`;
+  if(pending.length){
+    h+=`<div class="cs"><div class="ch">🛒 To Get <span style="background:var(--coral);color:#fff;border-radius:8px;padding:2px 9px;font-size:12px">${pending.length}</span></div>`;
+    SHOP_CATS.forEach(cat=>{const catItems=pending.filter(i=>i.cat===cat);if(!catItems.length)return;h+=`<div style="font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin:8px 0 4px">${cat}</div>`;catItems.forEach(item=>{h+=`<div class="cr"><div class="mc" onclick="toggleShop('${item.id}',this)" style="border-color:var(--teal)"></div><span class="cl">${item.name}</span><button onclick="delShop('${item.id}')" style="background:none;border:none;cursor:pointer;color:var(--muted);font-size:16px;padding:2px 6px">×</button></div>`;});});h+=`</div>`;
+  }
+  if(got.length){
+    h+=`<div class="cs"><div class="ch" style="justify-content:space-between">✅ Got it! <button onclick="clearGotShop()" class="btn bg" style="font-size:11px;padding:4px 10px">Clear all</button></div>`;
+    got.forEach(item=>{h+=`<div class="cr" style="opacity:.5"><div class="mc on" onclick="toggleShop('${item.id}',this)" style="background:var(--teal);border-color:transparent;color:#fff">✓</div><span class="cl" style="text-decoration:line-through">${item.name}</span></div>`;});h+=`</div>`;
+  }
+  if(!pending.length&&!got.length)h+=`<div style="text-align:center;padding:40px 20px;color:var(--muted)"><div style="font-size:48px;margin-bottom:10px">🛒</div><div style="font-weight:800;font-size:15px">Your list is empty!</div><div style="font-size:13px;margin-top:6px">Add items as you notice them while cleaning ✨</div></div>`;
+  c.innerHTML=h;
+}
+function addShopItem(){const inp=$('shopInput');const cat=$('shopCat');if(!inp||!inp.value.trim())return;if(!S.shopping)S.shopping={items:[]};S.shopping.items.push({id:'sh_'+Date.now(),name:inp.value.trim(),cat:cat?cat.value:SHOP_CATS[0],got:false});inp.value='';_autoSave();rShopping();showR('🛒','Added!','Don\'t forget to grab it! 🛍️');}
+function quickShop(label){if(!S.shopping)S.shopping={items:[]};const name=label.replace(/^[^\s]+\s/,'');S.shopping.items.push({id:'sh_'+Date.now(),name,cat:SHOP_CATS[0],got:false});_autoSave();rShopping();}
+function toggleShop(id,el){if(!S.shopping)return;const item=S.shopping.items.find(i=>i.id===id);if(!item)return;item.got=!item.got;if(item.got)conf();_autoSave();rShopping();}
+function delShop(id){if(!S.shopping)return;S.shopping.items=S.shopping.items.filter(i=>i.id!==id);_autoSave();rShopping();}
+function clearGotShop(){if(!S.shopping)return;S.shopping.items=S.shopping.items.filter(i=>!i.got);_autoSave();rShopping();}
+
+/* ── MOOD & MUSIC ── */
+const MOODS=[{id:'great',label:'Amazing!',emoji:'🥳',color:'#6BCB77',msg:"You're on fire! Let's tackle something big today!"},{id:'good',label:'Pretty good',emoji:'😊',color:'#4D96FF',msg:"Nice energy! Keep that momentum going 💪"},{id:'meh',label:'Meh',emoji:'😑',color:'#FFD93D',msg:"That's okay! Even one task is a win today."},{id:'tired',label:'Tired',emoji:'😴',color:'#A8A4CE',msg:"Rest is okay! Try just one tiny 3-min task."},{id:'stressed',label:'Stressed',emoji:'😤',color:'#FF9F43',msg:"Take a breath first 🌬️ Then one small corner."},{id:'sad',label:'Sad',emoji:'😢',color:'#FF6B6B',msg:"Be gentle with yourself 💗 You still showed up ✨"}];
+const PLAYLISTS=[{name:'Upbeat Pop 🎵',desc:'High energy top hits to power through chores',url:'https://open.spotify.com/playlist/37i9dQZF1DX3rxVfibe1L0',color:'#FF6B9D',bpm:'Fast'},{name:'Lo-fi Chill 🎧',desc:'Calm focus beats for gentle cleaning sessions',url:'https://open.spotify.com/playlist/37i9dQZF1DWWQRwui0ExPn',color:'#4D96FF',bpm:'Slow'},{name:'Happy Hits ☀️',desc:'Feel-good songs that make cleaning fun',url:'https://open.spotify.com/playlist/37i9dQZF1DX9XIFQuFvzM4',color:'#FFD93D',bpm:'Medium'},{name:'Deep Focus 🧘',desc:'Peaceful instrumentals for mindful tidying',url:'https://open.spotify.com/playlist/37i9dQZF1DWZeKCadgRdKQ',color:'#A8A4CE',bpm:'Slow'},{name:'Dance Hits 💃',desc:'Latin & pop bangers — clean and dance!',url:'https://open.spotify.com/playlist/37i9dQZF1DX10zKzsJ2jva',color:'#FF9F43',bpm:'Fast'},{name:'Soft Acoustic 🎸',desc:'Gentle morning acoustic for a slow start',url:'https://open.spotify.com/playlist/37i9dQZF1DX4E3UdUs7fUx',color:'#4ECDC4',bpm:'Slow'}];
+if(!S.moodLog)S.moodLog={today:null,log:[]};
+
+function rMood(){
+  const c=$('moodC');if(!c)return;
+  if(!S.moodLog)S.moodLog={today:null,log:[]};
+  const todayKey=new Date().toISOString().slice(0,10);const todayEntry=(S.moodLog.log||[]).find(e=>e.date===todayKey);
+  let h=`<div class="cs" style="border-top:4px solid var(--pink)"><div class="ch">💆 How are you feeling today?</div>`;
+  if(todayEntry){const m=MOODS.find(x=>x.id===todayEntry.mood)||MOODS[1];h+=`<div style="text-align:center;padding:16px;background:${m.color}18;border-radius:16px;margin-bottom:12px"><div style="font-size:48px">${m.emoji}</div><div style="font-size:16px;font-weight:900;margin:6px 0">${m.label}</div><div style="font-size:13px;color:var(--muted);line-height:1.5">${m.msg}</div><button onclick="S.moodLog.today=null;S.moodLog.log=(S.moodLog.log||[]).filter(e=>e.date!=='${todayKey}');_autoSave();rMood()" style="margin-top:10px;background:none;border:1.5px solid var(--border);border-radius:10px;padding:5px 14px;font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;cursor:pointer;color:var(--muted)">Change mood</button></div>`;}
+  else{h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:8px">`;MOODS.forEach(m=>{h+=`<button onclick="setMood('${m.id}')" style="padding:14px 8px;border-radius:14px;border:2.5px solid ${m.color}20;background:${m.color}12;font-family:'Nunito',sans-serif;cursor:pointer;transition:all .2s;text-align:center"><div style="font-size:28px">${m.emoji}</div><div style="font-size:11px;font-weight:800;color:var(--text);margin-top:4px">${m.label}</div></button>`;});h+=`</div>`;}
+  h+=`</div>`;
+  const recentLog=(S.moodLog.log||[]).slice(-7);
+  if(recentLog.length>1){h+=`<div class="cs"><div class="ch">📊 Last ${recentLog.length} Days</div><div style="display:flex;gap:6px;align-items:flex-end;height:60px;padding:4px 0">`;recentLog.forEach(entry=>{const m=MOODS.find(x=>x.id===entry.mood)||MOODS[1];const idx=MOODS.findIndex(x=>x.id===entry.mood);const hh=[80,65,50,35,45,30][idx]||50;h+=`<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="height:${hh}%;width:100%;background:${m.color};border-radius:6px 6px 0 0;min-height:8px"></div><div style="font-size:16px">${m.emoji}</div><div style="font-size:9px;color:var(--muted);font-weight:700">${entry.date.slice(5)}</div></div>`;});h+=`</div></div>`;}
+  h+=`<div class="cs" style="border-top:4px solid var(--lavender)"><div class="ch">🎵 Cleaning Playlist Vibes</div><div style="font-size:12px;color:var(--muted);margin-bottom:12px">Pick a mood and open in Spotify 🎧</div><div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px">`;
+  PLAYLISTS.forEach(p=>{h+=`<div onclick="openPlaylist('${p.url}')" style="padding:14px;border-radius:16px;border:2.5px solid ${p.color}30;background:${p.color}10;cursor:pointer;transition:all .2s" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''"><div style="font-size:15px;font-weight:800;margin-bottom:4px">${p.name}</div><div style="font-size:11px;color:var(--muted);margin-bottom:8px;line-height:1.4">${p.desc}</div><div style="display:flex;align-items:center;justify-content:space-between"><span style="font-size:10px;font-weight:800;background:${p.color};color:#fff;border-radius:6px;padding:2px 7px">${p.bpm} BPM</span><span style="font-size:11px;color:${p.color};font-weight:800">Open ↗</span></div></div>`;});h+=`</div></div>`;
+  const affirmations=["You are enough, even on the messy days 💗","Your home doesn't need to be perfect. It needs to be yours ✨","Every tiny step counts. You showed up today 🌟","Be kind to yourself. You're doing the best you can 💜","Small progress is still progress. Celebrate it! 🎉","You are not your mess. You are the one fixing it 🦋"];
+  const aff=affirmations[new Date().getDate()%affirmations.length];
+  h+=`<div style="background:linear-gradient(135deg,#f0eeff,#ffe0f0);border-radius:16px;padding:20px;text-align:center;border-left:4px solid var(--pink)"><div style="font-size:11px;font-weight:800;color:var(--pink);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Today's Affirmation 💗</div><div style="font-size:15px;font-weight:700;line-height:1.6;color:var(--text)">"${aff}"</div></div>`;
+  c.innerHTML=h;
+}
+function setMood(id){if(!S.moodLog)S.moodLog={today:null,log:[]};const todayKey=new Date().toISOString().slice(0,10);S.moodLog.today=id;S.moodLog.log=(S.moodLog.log||[]).filter(e=>e.date!==todayKey);S.moodLog.log.push({date:todayKey,mood:id});if(S.moodLog.log.length>30)S.moodLog.log=S.moodLog.log.slice(-30);_autoSave();rMood();const m=MOODS.find(x=>x.id===id);if(m)showR(m.emoji,m.label,m.msg);}
+function openPlaylist(url){window.open(url,'_blank');}
+
+/* ── TIME BLOCK PLANNER ── */
+const TIME_SLOTS=[{id:'tb_early',label:'Early Morning',time:'6–8 AM',emoji:'🌅',color:'#FFD93D'},{id:'tb_morning',label:'Mid Morning',time:'8–10 AM',emoji:'☀️',color:'#FF9F43'},{id:'tb_late_morning',label:'Late Morning',time:'10–12 PM',emoji:'🌤️',color:'#4ECDC4'},{id:'tb_afternoon',label:'Afternoon',time:'12–3 PM',emoji:'🌞',color:'#4D96FF'},{id:'tb_late_afternoon',label:'Late Afternoon',time:'3–5 PM',emoji:'🌇',color:'#A8A4CE'},{id:'tb_evening',label:'Evening',time:'5–7 PM',emoji:'🌙',color:'#FF6B9D'}];
+const QUICK_TASKS=['Make bed','Wipe counters','Sweep floor','Empty trash','Quick bathroom','Wipe stove','Mop kitchen','Vacuum living room','Clean toilet','Do laundry','Dust shelves','Wipe mirrors'];
+if(!S.timeBlocks)S.timeBlocks={};
+
+function rTimeBlocks(){
+  const c=$('timeblocksC');if(!c)return;
+  if(!S.timeBlocks)S.timeBlocks={};
+  const todayKey=new Date().toISOString().slice(0,10);
+  if(!S.timeBlocks[todayKey])S.timeBlocks[todayKey]={};
+  const today=S.timeBlocks[todayKey];
+  let h=`<div class="ft"><strong style="color:var(--teal)">⏰ How to use</strong><br><span style="font-size:12px;color:var(--muted)">Pick time slots that work for you today. Click a slot to assign tasks. No pressure — just helps you see when to clean!</span></div>`;
+  h+=`<div class="cs" style="border-top:4px solid var(--orange)"><div class="ch">📅 Today's Plan — ${new Date().toLocaleDateString('en',{weekday:'long',month:'short',day:'numeric'})}</div>`;
+  TIME_SLOTS.forEach(slot=>{const slotData=today[slot.id]||{active:false,task:''};const active=slotData.active;
+    h+=`<div style="border:2.5px solid ${active?slot.color:'var(--border)'};border-radius:14px;padding:12px 14px;margin-bottom:8px;background:${active?slot.color+'12':'#fff'};transition:all .2s"><div style="display:flex;align-items:center;gap:10px;cursor:pointer" onclick="toggleSlot('${slot.id}','${todayKey}')"><div style="font-size:24px">${slot.emoji}</div><div style="flex:1"><div style="font-size:13px;font-weight:900;color:${active?slot.color:'var(--text)'}">${slot.label}</div><div style="font-size:11px;color:var(--muted);font-weight:700">${slot.time}</div></div><div style="width:28px;height:28px;border-radius:8px;border:2.5px solid ${slot.color};background:${active?slot.color:'transparent'};display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:800;flex-shrink:0">${active?'✓':''}</div></div>`;
+    if(active){h+=`<div style="margin-top:10px;padding-top:10px;border-top:1px solid ${slot.color}30"><div style="font-size:11px;font-weight:800;color:var(--muted);margin-bottom:6px">Planned task:</div><input value="${slotData.task||''}" placeholder="What will you clean? (optional)" onchange="setSlotTask('${slot.id}','${todayKey}',this.value)" style="width:100%;padding:7px 10px;border:1.5px solid ${slot.color}40;border-radius:9px;font-family:'Nunito',sans-serif;font-size:12px;outline:none;background:white"><div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:7px">${QUICK_TASKS.slice(0,6).map(t=>`<button onclick="setSlotTask('${slot.id}','${todayKey}','${t}')" style="padding:3px 8px;border-radius:8px;border:1.5px solid ${slot.color}40;background:${slot.color}10;font-family:'Nunito',sans-serif;font-size:11px;font-weight:700;cursor:pointer;color:var(--text)">${t}</button>`).join('')}</div></div>`;}
+    h+=`</div>`;
+  });h+=`</div>`;
+  const activeSlotsCount=Object.values(today).filter(s=>s.active).length;
+  if(activeSlotsCount>0){h+=`<div class="stk" style="margin-bottom:14px"><div style="font-size:28px">⏱️</div><div><div style="font-size:18px;font-weight:900">${activeSlotsCount*15}–${activeSlotsCount*30} min</div><div style="font-size:12px;opacity:.85">Estimated cleaning time for ${activeSlotsCount} session${activeSlotsCount>1?'s':''}</div></div></div>`;}
+  h+=`<div class="cs"><div class="ch">📆 This Week at a Glance</div><div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px">`;
+  const days=['S','M','T','W','T','F','S'];const today_d=new Date();
+  for(let i=0;i<7;i++){const d=new Date(today_d);d.setDate(today_d.getDate()-today_d.getDay()+i);const key=d.toISOString().slice(0,10);const dayData=S.timeBlocks[key]||{};const count=Object.values(dayData).filter(s=>s.active).length;const isToday=key===todayKey;h+=`<div style="text-align:center;padding:8px 4px;border-radius:10px;background:${isToday?'var(--pink)':count>0?'#f0eeff':'#f5f5f5'};color:${isToday?'#fff':'var(--text)'}"><div style="font-size:10px;font-weight:800">${days[i]}</div><div style="font-size:18px;margin:2px 0">${count>0?'✓':'·'}</div><div style="font-size:9px;font-weight:700;color:${isToday?'rgba(255,255,255,.8)':'var(--muted)'}">${count>0?count+'x':''}</div></div>`;}
+  h+=`</div></div>`;c.innerHTML=h;
+}
+function toggleSlot(slotId,dayKey){if(!S.timeBlocks)S.timeBlocks={};if(!S.timeBlocks[dayKey])S.timeBlocks[dayKey]={};const current=S.timeBlocks[dayKey][slotId]||{active:false,task:''};S.timeBlocks[dayKey][slotId]={...current,active:!current.active};_autoSave();rTimeBlocks();}
+function setSlotTask(slotId,dayKey,val){if(!S.timeBlocks)S.timeBlocks={};if(!S.timeBlocks[dayKey])S.timeBlocks[dayKey]={};if(!S.timeBlocks[dayKey][slotId])S.timeBlocks[dayKey][slotId]={active:true};S.timeBlocks[dayKey][slotId].task=val;_autoSave();}
+
+/* ── ROOM STATUS TRACKER ── */
+const ROOM_STATUS=[{id:'rs1',name:'Kitchen',emoji:'🍳'},{id:'rs2',name:'Living Room',emoji:'🛋️'},{id:'rs3',name:'Bedroom',emoji:'🛏️'},{id:'rs4',name:'Bathroom',emoji:'🚿'},{id:'rs5',name:'Entrance',emoji:'🚪'},{id:'rs6',name:'Dining Room',emoji:'🍽️'},{id:'rs7',name:'Kids Room',emoji:'🧸'},{id:'rs8',name:'Office',emoji:'💼'},{id:'rs9',name:'Garage',emoji:'🏠'},{id:'rs10',name:'Laundry',emoji:'🧺'}];
+const STATUS_OPTS=[{id:'sparkling',label:'Sparkling ✨',color:'#6BCB77',emoji:'✨'},{id:'clean',label:'Clean 👍',color:'#4D96FF',emoji:'👍'},{id:'ok',label:'Okay 😑',color:'#FFD93D',emoji:'😑'},{id:'messy',label:'Messy 😬',color:'#FF9F43',emoji:'😬'},{id:'disaster',label:'Help! 🚨',color:'#FF6B6B',emoji:'🚨'}];
+if(!S.roomStatus)S.roomStatus={};
+
+function rRoomStatus(){
+  const c=$('roomstatusC');if(!c)return;
+  if(!S.roomStatus)S.roomStatus={};
+  const statuses=ROOM_STATUS.map(r=>S.roomStatus[r.id]||null).filter(Boolean);
+  const sparkCount=statuses.filter(s=>s.status==='sparkling'||s.status==='clean').length;
+  const total=ROOM_STATUS.length;
+  let h=`<div class="cs" style="background:linear-gradient(135deg,#f0fff4,#e8f8ff);border:2px solid var(--teal);margin-bottom:12px"><div class="ch">🏠 Home Score</div><div style="display:flex;align-items:center;gap:14px;margin-bottom:10px"><div style="font-size:48px;font-weight:900;color:var(--teal)">${sparkCount}/${total}</div><div><div style="font-size:14px;font-weight:800;margin-bottom:3px">Rooms looking good!</div><div style="font-size:12px;color:var(--muted)">Click a room to update its status</div></div></div><div class="pw"><div class="pf" style="width:${Math.round(sparkCount/total*100)}%;background:linear-gradient(90deg,var(--teal),var(--green))"></div></div></div>`;
+  h+=`<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px">`;
+  ROOM_STATUS.forEach(room=>{const rs=S.roomStatus[room.id];const sopt=rs?STATUS_OPTS.find(s=>s.id===rs.status)||STATUS_OPTS[2]:null;const note=rs?rs.note||'':'';
+    h+=`<div class="cs" style="border-top:4px solid ${sopt?sopt.color:'var(--border)'};padding:14px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><span style="font-size:22px">${room.emoji}</span><div style="font-size:13px;font-weight:900">${room.name}</div>${sopt?`<span style="margin-left:auto;font-size:14px">${sopt.emoji}</span>`:''}</div><div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:8px">${STATUS_OPTS.map(s=>`<button onclick="setRoomStatus('${room.id}','${s.id}')" style="padding:4px 8px;border-radius:8px;border:2px solid ${rs&&rs.status===s.id?s.color:'transparent'};background:${rs&&rs.status===s.id?s.color+'20':'#f5f5f5'};font-family:'Nunito',sans-serif;font-size:10px;font-weight:800;cursor:pointer">${s.emoji}</button>`).join('')}</div>${sopt?`<div style="font-size:10px;font-weight:800;color:${sopt.color};margin-bottom:5px">${sopt.label}</div>`:'<div style="font-size:10px;color:var(--muted);margin-bottom:5px">No status yet</div>'}<input placeholder="Quick note (optional)..." value="${note}" onchange="setRoomNote('${room.id}',this.value)" style="width:100%;padding:6px 9px;border:1.5px solid var(--border);border-radius:8px;font-family:'Nunito',sans-serif;font-size:11px;outline:none"></div>`;
+  });h+=`</div>`;
+  const messyRooms=ROOM_STATUS.filter(r=>{const rs=S.roomStatus[r.id];return rs&&(rs.status==='messy'||rs.status==='disaster');});
+  if(messyRooms.length){const pick=messyRooms[Math.floor(Math.random()*messyRooms.length)];h+=`<div class="stk" style="margin-top:12px"><div style="font-size:28px">🎯</div><div><div style="font-size:14px;font-weight:900">Suggested Focus</div><div style="font-size:13px;opacity:.9">${pick.emoji} ${pick.name} needs some love today!</div></div></div>`;}
+  c.innerHTML=h;
+}
+function setRoomStatus(roomId,statusId){if(!S.roomStatus)S.roomStatus={};const existing=S.roomStatus[roomId]||{};S.roomStatus[roomId]={...existing,status:statusId,updatedAt:new Date().toISOString()};if(statusId==='sparkling'||statusId==='clean')conf();_autoSave();rRoomStatus();const s=STATUS_OPTS.find(x=>x.id===statusId);if(s)showR(s.emoji,'Updated!','Room status saved ✨');}
+function setRoomNote(roomId,val){if(!S.roomStatus)S.roomStatus={};if(!S.roomStatus[roomId])S.roomStatus[roomId]={};S.roomStatus[roomId].note=val;_autoSave();}
+
+/* ── Convenience: render everything ── */
+function renderAll(){
+  rDash();rZones();rWeekly();rSched();rDeep();rLaundry();rSupplies();rHacks();rFamily();rYearly();rChallenges();rBadges();
+}
+
+
+/* ── Periodic heartbeat save every 60s (catches any missed _autoSave calls) ── */
+setInterval(()=>{ if(S && S.autoSave) _doSave(); }, 60000);
+
+/* ── Save immediately before page unload (tab close, refresh, navigate away) ── */
+window.addEventListener('beforeunload', ()=>{ _doSave(); });
+
+/* ── On visibility change: save when user switches tabs/apps ── */
+document.addEventListener('visibilitychange', ()=>{
+  if(document.visibilityState==='hidden') _doSave();
+});
+
+</script>
+</body>
+</html>
